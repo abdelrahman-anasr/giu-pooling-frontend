@@ -35,7 +35,6 @@ export default function Home() {
 
     return (
         <div style={{overflowX: 'clip', width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
-                  <button style={{width: 100, height: 30, left: 50, top: 100, position: 'absolute', background: '#FFD281', borderRadius: 70}} onClick={() => login({ variables: { email: 'pooli2004@gmail.com' , password: '123'} }).then(() => console.log(loginData)).catch(error => console.log(error))}>Login</button>
             <img src={require('../images/design.jpg')} style={{width: 1706, height: 800, left: '0%', top: 0, position: 'absolute' , zIndex: -1 , opacity: 0.3}} />
             <div style={{width: '100%', height: '100%', top: 200 , left: 400, position: 'absolute' , zIndex: -0.5 , opacity: 1 , fontSize: 80 , fontFamily: "IBM Plex Sans", fontWeight: 700, color: '#000000'}}>Welcome to</div>
             <img src={require('../images/giu.png')} style={{width: 130, height: 70, left: 860, top: 220, position: 'absolute' , zIndex: -0.5 , opacity: 1}} /> 

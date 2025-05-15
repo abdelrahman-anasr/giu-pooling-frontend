@@ -62,7 +62,7 @@ export default function RegisterForm() {
       }
     `;
     
-    const response = await fetch("http://localhost:4000/graphql", {
+    const response = await fetch("https://userservice-production-63de.up.railway.app/graphql", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -33,24 +33,6 @@ const DashboardPage = () => {
   let activeTripsOfPassenger = [];
 
   let offers = [
-    {
-      tripId: 1,
-      location: 'Heliopolis',
-      departureTime: '11:20 AM',
-      price: 45
-    },
-    {
-      tripId: 2,
-      location: 'Fifth Settlment',
-      departureTime: '11:20 AM',
-      price: 45
-    },
-    {
-      tripId: 3,
-      location: 'First Settlement',
-      departureTime: '11:20 AM',
-      price: 45
-    },
   ];
 
 
@@ -181,6 +163,44 @@ const DashboardPage = () => {
     }
   }`;
 
+  const FETCH_REQUESTS_FOR_MY_RIDES_QUERY = gql`
+  query FetchRequestsForAllMyRides {
+    fetchRequestsForAllMyRides {
+        id
+        studentId
+        rideId
+        subZoneName
+        status
+        price
+    }
+  }
+  `;
+
+  const REQUEST_RIDE_QUERY = gql`
+    RejectRequest($id: Int!) {
+      rejectRequest(id: $id) {
+        id
+        studentId
+        rideId
+        subZoneName
+        status
+        price
+      }
+    }
+  `;
+
+  const ACCEPT_RIDE_MUTATION = gql`
+    AcceptRequest($id: Int!) {
+      acceptRequest(id: $id) {
+        id
+        studentId
+        rideId
+        subZoneName
+        status
+        price
+      }
+    }`;
+
 
   const {data : fetchMyDetailsData, loading : fetchMyDetailsLoading, error : fetchMyDetailsError} = useQuery(FETCH_DETAILS_QUERY , {client: client});
 
@@ -196,11 +216,17 @@ const DashboardPage = () => {
 
   const {data : fetchMyRidesData, loading : fetchMyRidesLoading, error : fetchMyRidesError} = useQuery(FETCH_MY_RIDES_QUERY , {client: rideClient});
 
+  const {data : fetchRequestsForAllMyRidesData, loading : fetchRequestsForAllMyRidesLoading, error : fetchRequestsForAllMyRidesError} = useQuery(FETCH_REQUESTS_FOR_MY_RIDES_QUERY , {client: bookingClient});
+
   const [cancelBooking, { cancelBookingData, cancelBookingLoading, cancelBookingError }] =  useLazyQuery(CANCEL_BOOKING_QUERY , {client: bookingClient});
 
   const [cancelRequest, { cancelRequestData, cancelRequestLoading, cancelRequestError }] =  useLazyQuery(CANCEL_REQUEST_QUERY , {client: bookingClient});
 
+  const [rejectRide, { rejectRideData, rejectRideLoading, rejectRideError }] =  useLazyQuery(REQUEST_RIDE_QUERY , {client: bookingClient});
+
   const [cancelRide , { cancelRideData , cancelRideLoading , cancelRideError }] = useMutation(CANCEL_RIDE_MUTATION , {client: rideClient});
+
+  const [acceptRide , { acceptRideData , acceptRideLoading , acceptRideError }] = useMutation(ACCEPT_RIDE_MUTATION , {client: bookingClient});
 
 
   if(fetchAllRidesLoading || fetchMyDetailsLoading || fetchMyBookingsLoading || fetchMyRequestsLoading || fetchAllRidesLoading || fetchAllCarsLoading || fetchMiniUsersLoading)
@@ -236,9 +262,18 @@ const DashboardPage = () => {
   let rides = [];
   let allRides = fetchAllRidesData.fetchAllRides;
 
+  const acceptRideFunction = async (id) => {
+    acceptRide({ variables: { id: id }});
+  }
+
+  const rejectRideFunction = async (id) => {
+    rejectRide({ variables: { id: id }});
+  }
+
+
   if(role === 'driver')
   {
-    if(fetchMyRidesError)
+    if(fetchMyRidesError || fetchRequestsForAllMyRidesError)
     {
       return (
         <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
@@ -246,7 +281,7 @@ const DashboardPage = () => {
         </div>
       );
     }
-    else if(fetchMyRidesLoading)
+    else if(fetchMyRidesLoading || fetchRequestsForAllMyRidesLoading)
     {
       return (
         <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
@@ -255,6 +290,24 @@ const DashboardPage = () => {
       );
     }
     rides = fetchMyRidesData.fetchMyRides;
+
+    const requests = fetchRequestsForAllMyRidesData.fetchRequestsForAllMyRides;
+
+    for(let i = 0; i < requests.length; i++)
+    {
+      const ride = allRides.find(ride => ride.id === requests[i].rideId);
+      console.log("Ride is:" , ride);
+      const departureDate = ride.time.split('T')[0];
+      let departureTime = ride.time.split('T')[1];
+      departureTime = departureTime.split('.')[0];
+      let [hours , minutes , seconds] = departureTime.split(':');
+      let timeSign = hours >= 12 ? 'PM' : 'AM';
+      hours = hours % 12;
+      departureTime = hours + ':' + minutes + ' ' + timeSign;
+      departureTime = departureDate + " , " + departureTime;
+
+      offers.push({tripId: requests[i].rideId , location: requests[i].subZoneName , departureTime: departureTime , price: requests[i].price , acceptFunction: acceptRideFunction , rejectFunction: rejectRideFunction});
+    }
 
     console.log("Rides is:" , rides);
 

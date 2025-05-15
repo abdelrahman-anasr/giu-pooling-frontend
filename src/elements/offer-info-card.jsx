@@ -1,7 +1,7 @@
 import '../App.css';
 import ApproveButton from './approve-button';
 import RejectButton from './reject-button';
-export default function OfferInfoCard({tripId , location , departureTime , price , percentTop})
+export default function OfferInfoCard({tripId , location , departureTime , price , percentTop , acceptFunction , rejectFunction})
 {
     return (
         <div style={{width: 873.41, height: 238, left: '8%', top: percentTop + '%' , position: 'absolute', background: 'white', borderRadius: 20, border: '4px black solid'}}>

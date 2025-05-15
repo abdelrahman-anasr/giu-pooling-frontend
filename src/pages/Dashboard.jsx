@@ -177,7 +177,7 @@ const DashboardPage = () => {
   `;
 
   const REJECT_REQUEST_QUERY = gql`
-    RejectRequest($id: Int!) {
+    query RejectRequest($id: Int!) {
       rejectRequest(id: $id) {
         id
         studentId
@@ -190,7 +190,7 @@ const DashboardPage = () => {
   `;
 
   const ACCEPT_REQUEST_MUTATON = gql`
-    AcceptRequest($id: Int!) {
+    mutation AcceptRequest($id: Int!) {
       acceptRequest(id: $id) {
         id
         studentId

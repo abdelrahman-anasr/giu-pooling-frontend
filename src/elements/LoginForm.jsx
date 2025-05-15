@@ -1,6 +1,9 @@
 import React, { useState, } from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 const LoginForm = () => {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -32,7 +35,7 @@ const LoginForm = () => {
       const result = await response.json();
 
       if (result.data?.login?.token) {
-        alert('Login successful');
+        navigate('/dashboard');
         localStorage.setItem('token', result.data.login.token);
       } else {
         setError(result.errors?.[0]?.message || 'Login failed');

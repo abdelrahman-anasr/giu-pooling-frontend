@@ -12,6 +12,7 @@ import Results from './pages/Results';
 import BookingPage from './pages/BookingPage';
 import Login from './pages/Login';
 import Register from './pages/register';
+import Complaints from './pages/Complaints';
 export default function App() {
   console.log("version is:" , React.version);
   return (
@@ -27,6 +28,7 @@ export default function App() {
         <Route path="/booking" element={<BookingPage />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
+        <Route path='/complaints' element={<Complaints />} />
       </Routes>
     </div>
   );

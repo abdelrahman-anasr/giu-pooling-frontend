@@ -44,7 +44,7 @@ export default function Complaints() {
   mutation CreateComplaint($Subject: String!, $Message: String!) {
     createComplaint(Subject: $Subject, Message: $Message) {
         id
-        userId
+        universityId
         Subject
         Message
         createdAt

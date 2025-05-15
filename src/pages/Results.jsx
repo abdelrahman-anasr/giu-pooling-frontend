@@ -100,8 +100,8 @@ export default function Results() {
     }`;
 
     const MINI_USERS_QUERY = gql`
-    query MiniUsers {
-        MiniUsers {
+    query Miniusers {
+        Miniusers {
             universityId
             name
         }

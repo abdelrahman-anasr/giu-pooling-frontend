@@ -1,14 +1,11 @@
-import PassengerTripInfoCard from '../elements/passenger-trip-info-card';
 import PassengerTripsList from '../elements/passenger-trips-list';
 import { useEffect } from 'react';
 import ChoiceBarCurrentBooking from '../elements/choice-bar-current-booking'
 import ScrollableOffersList from '../elements/offers-list'
 import ScrollableDriverTripsList from '../elements/driver-trip-list'
-import OfferInfoCard from '../elements/offer-info-card';
-import { useState , setState } from 'react';
+import { useState } from 'react';
 import { ApolloClient , InMemoryCache , ApolloProvider , gql, useQuery , useMutation , useLazyQuery} from '@apollo/client';
 import '../App.css';
-import Navbar from '../elements/navbar';
 
 
 

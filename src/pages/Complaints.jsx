@@ -77,6 +77,9 @@ export default function Complaints() {
     }
     if(fetchMyDetailsError || fetchMyComplaintsError || fetchAdminResponsesForMyComplaintsError)
     {
+        console.log("fetchMyDetailsError Error is:" , fetchMyDetailsError);
+        console.log("fetchMyComplaintsError Error is:" , fetchMyComplaintsError);
+        console.log("fetchAdminResponsesForMyComplaintsError Error is:" , fetchAdminResponsesForMyComplaintsError);
         if(fetchMyDetailsError === 'Unauthorized' || fetchMyComplaintsError === 'Unauthorized' || fetchAdminResponsesForMyComplaintsError === 'Unauthorized')
         {
             return (
@@ -108,7 +111,7 @@ export default function Complaints() {
         const adminResponseCreatedAt = adminResponse.createdAt;
         mockAdminResponses.push({id: adminResponse.id , complaintId: adminResponse.complaintId , Subject: adminResponseSubject , Message: adminResponseMessage , createdAt: adminResponseCreatedAt});
     });
-    
+
     return (
         <div style={{ width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
             <div style={{width: 1000, height: 115, left: '12%', top: 180, position: 'absolute', color: 'black', fontSize: 96, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>Complaints</div>

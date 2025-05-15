@@ -10,7 +10,8 @@ import BookSearch from './pages/BookSearch';
 import Home from './pages/Home';
 import Results from './pages/Results';
 import BookingPage from './pages/BookingPage';
-import TestPage from './pages/testPage';
+import Login from './pages/Login';
+import Register from './pages/register';
 export default function App() {
   console.log("version is:" , React.version);
   return (
@@ -24,7 +25,8 @@ export default function App() {
         <Route path="/book" element={<BookSearch />} />
         <Route path="/search" element={<Results />} />
         <Route path="/booking" element={<BookingPage />} />
-        <Route path="/test" element={<TestPage />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<Register />} />
       </Routes>
     </div>
   );

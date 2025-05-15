@@ -214,12 +214,14 @@ const DashboardPage = () => {
 
   if(fetchAllRidesError || fetchMyDetailsError || fetchMyBookingsError || fetchMyRequestsError || fetchAllRidesError || fetchAllCarsError || fetchMiniUsersError)
   {
-    console.log("Fetch all rides error is:" , fetchAllRidesError);
-    console.log("Fetch my details error is:" , fetchMyDetailsError);
-    console.log("Fetch my bookings error is:" , fetchMyBookingsError);
-    console.log("Fetch my requests error is:" , fetchMyRequestsError);
-    console.log("Fetch all cars error is:" , fetchAllCarsError);
-    console.log("Fetch mini users error is:" , fetchMiniUsersError);
+    if(fetchAllRidesError === 'Unauthorized' || fetchMyDetailsError === 'Unauthorized' || fetchMyBookingsError === 'Unauthorized' || fetchMyRequestsError === 'Unauthorized' || fetchAllRidesError === 'Unauthorized' || fetchAllCarsError === 'Unauthorized' || fetchMiniUsersError === 'Unauthorized')
+    {
+      return (
+        <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
+          <div style={{width: 510, height: 115, left: '12%', top: 315, position: 'absolute', color: 'black', fontSize: 96, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>You are Unauthorized to access this page</div>
+        </div>
+      );
+    }
     return (
       <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
         <div style={{width: 510, height: 115, left: '12%', top: 315, position: 'absolute', color: 'black', fontSize: 96, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>ERROR</div>

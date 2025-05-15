@@ -176,7 +176,7 @@ const DashboardPage = () => {
   }
   `;
 
-  const REQUEST_RIDE_QUERY = gql`
+  const REJECT_REQUEST_QUERY = gql`
     RejectRequest($id: Int!) {
       rejectRequest(id: $id) {
         id
@@ -189,7 +189,7 @@ const DashboardPage = () => {
     }
   `;
 
-  const ACCEPT_RIDE_MUTATION = gql`
+  const ACCEPT_REQUEST_MUTATON = gql`
     AcceptRequest($id: Int!) {
       acceptRequest(id: $id) {
         id
@@ -222,11 +222,11 @@ const DashboardPage = () => {
 
   const [cancelRequest, { cancelRequestData, cancelRequestLoading, cancelRequestError }] =  useLazyQuery(CANCEL_REQUEST_QUERY , {client: bookingClient});
 
-  const [rejectRide, { rejectRideData, rejectRideLoading, rejectRideError }] =  useLazyQuery(REQUEST_RIDE_QUERY , {client: bookingClient});
+  const [rejectRequest, { rejectRequestData, rejectRequestLoading, rejectRequestError }] =  useLazyQuery(REJECT_REQUEST_QUERY , {client: bookingClient});
 
   const [cancelRide , { cancelRideData , cancelRideLoading , cancelRideError }] = useMutation(CANCEL_RIDE_MUTATION , {client: rideClient});
 
-  const [acceptRide , { acceptRideData , acceptRideLoading , acceptRideError }] = useMutation(ACCEPT_RIDE_MUTATION , {client: bookingClient});
+  const [acceptRequest , { acceptRequestData , acceptRequestLoading , acceptRequestError }] = useMutation(ACCEPT_REQUEST_MUTATON , {client: bookingClient});
 
 
   if(fetchAllRidesLoading || fetchMyDetailsLoading || fetchMyBookingsLoading || fetchMyRequestsLoading || fetchAllRidesLoading || fetchAllCarsLoading || fetchMiniUsersLoading)
@@ -263,11 +263,11 @@ const DashboardPage = () => {
   let allRides = fetchAllRidesData.fetchAllRides;
 
   const acceptRideFunction = async (id) => {
-    acceptRide({ variables: { id: id }});
+    acceptRequest({ variables: { id: id }});
   }
 
   const rejectRideFunction = async (id) => {
-    rejectRide({ variables: { id: id }});
+    rejectRequest({ variables: { id: id }});
   }
 
 

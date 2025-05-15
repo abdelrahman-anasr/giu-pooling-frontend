@@ -66,9 +66,9 @@ export default function Complaints() {
     createComplaint({ variables: { Subject: complaintSubject , Message: complaintDescription }});
     setSuccess(true);
 
-    setInterval(() => {
+    setTimeout(() => {
       navigateToDashboard();
-    }, 2500);
+    }, 3200);
   };
 
   if(fetchMyDetailsLoading)

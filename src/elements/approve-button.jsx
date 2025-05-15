@@ -25,4 +25,12 @@ export default function ApproveButton({label , size , functionToCall , topPositi
             </button>
         );
     }
+    else if(size === 'wide')
+    {
+        return ( 
+            <button className='approve-button' onClick={() => {functionToCall()}} style={{width: 400, height: 61, left: leftPosition, top: topPosition, position: 'absolute'}}>
+                <div style={{width: 300, height: 33, left: 47, top: 14, position: 'absolute', color: '#111010', fontSize: 25, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word' , textAlign: 'center'}}>{label}</div>
+            </button>
+        );
+    }
  }

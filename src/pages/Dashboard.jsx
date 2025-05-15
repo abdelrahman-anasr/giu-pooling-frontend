@@ -297,7 +297,7 @@ const DashboardPage = () => {
     console.log("Driver ID is:" , ride.driverId);
     const car = fetchAllCarsData.cars.find(car => car.DriverId.toString() === ride.driverId.toString());
     console.log("Car is:" , car);
-    const driverName = fetchMiniUsersData.MiniUsers.find(user => user.universityId.toString() === ride.driverId.toString()).name;
+    const driverName = fetchMiniUsersData.Miniusers.find(user => user.universityId.toString() === ride.driverId.toString()).name;
     const data = {id: fetchMyRequestsData.fetchMyRequests[i].id ,tripId : fetchMyRequestsData.fetchMyRequests[i].rideId , type: 'Request' , currentStatus: fetchMyRequestsData.fetchMyRequests[i].status , tripLocation: ride.areaName , driversName: driverName , departureTime: departureTime , carType: car.carModel , pricePerPerson: fetchMyRequestsData.fetchMyRequests[i].price , cancelFunction: cancelRequest};
     if(ride.active)
     {

@@ -45,8 +45,9 @@ export default function Complaints() {
     createComplaint(Subject: $Subject, Message: $Message) {
         id
         userId
-        subject
-        message
+        Subject
+        Message
+        createdAt
     }
   }`;
 

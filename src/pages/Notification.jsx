@@ -12,12 +12,14 @@ import ScrollableNotificationsSidebar from "../elements/scrollable-notifications
 
 const client = new ApolloClient({
     uri: "https://userservice-production-63de.up.railway.app/graphql",
-    cache: new InMemoryCache()
+    cache: new InMemoryCache(),
+    credentials: 'include'
 });
 
 const notificationClient = new ApolloClient({
     uri: "notificationservice-production-d8cf.up.railway.app/notification",
-    cache: new InMemoryCache()
+    cache: new InMemoryCache(),
+    credentials: 'include'
 });
 
 export default function Notification() {

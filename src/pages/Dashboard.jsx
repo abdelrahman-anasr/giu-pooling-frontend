@@ -310,7 +310,7 @@ const DashboardPage = () => {
       departureTime = hours + ':' + minutes + ' ' + timeSign;
       departureTime = departureDate + " , " + departureTime;
 
-      offers.push({tripId: requests[i].rideId , location: requests[i].subZoneName , departureTime: departureTime , price: requests[i].price , acceptFunction: acceptRideFunction , rejectFunction: rejectRideFunction});
+      offers.push({id: requests[i].id , tripId: requests[i].rideId , location: requests[i].subZoneName , departureTime: departureTime , price: requests[i].price , acceptFunction: acceptRideFunction , rejectFunction: rejectRideFunction});
     }
 
     console.log("Rides is:" , rides);
@@ -330,6 +330,7 @@ const DashboardPage = () => {
       hours = hours % 12;
       departureTime = hours + ':' + minutes + ' ' + timeSign;
       departureTime = departureDate + " , " + departureTime;
+      console.log("Ride active is:" , ride.active);
       const data = {tripId : ride.id , location: ride.areaName , departureTime: departureTime , price: ride.basePrice , active: ride.active , cancelFunction: cancelRideFunction};
       tripsOfDriver.push(data);
     });

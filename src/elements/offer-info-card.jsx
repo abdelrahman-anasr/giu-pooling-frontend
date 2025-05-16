@@ -1,7 +1,7 @@
 import '../App.css';
 import ApproveButton from './approve-button';
 import RejectButton from './reject-button';
-export default function OfferInfoCard({tripId , location , departureTime , price , percentTop , acceptFunction , rejectFunction})
+export default function OfferInfoCard({id , tripId , location , departureTime , price , percentTop , acceptFunction , rejectFunction})
 {
     return (
         <div style={{width: 873.41, height: 238, left: '8%', top: percentTop + '%' , position: 'absolute', background: 'white', borderRadius: 20, border: '4px black solid'}}>
@@ -13,8 +13,8 @@ export default function OfferInfoCard({tripId , location , departureTime , price
         <div style={{width: 250, height: 28, left: '40%', top: '70%', position: 'absolute', color: 'black', fontSize: 24, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>Price:</div>
         <div style={{width: 238.43, height: 31, left: '40%', top: '82%', position: 'absolute', color: 'black', fontSize: 24, fontFamily: 'IBM Plex Sans', fontWeight: '400', wordWrap: 'break-word'}}>{price} EGP</div>
 
-        <ApproveButton label={'Accept'} functionToCall={() => {}} topPosition={'40%'} leftPosition={'75%'} size={'small'}/>
-        <RejectButton label={'Reject'} functionToCall={() => {}} topPosition={'70%'} leftPosition={'75%'} size={'small'}/>
+        <ApproveButton label={'Accept'} functionToCall={() => {acceptFunction(id)}} topPosition={'40%'} leftPosition={'75%'} size={'small'}/>
+        <RejectButton label={'Reject'} functionToCall={() => {rejectFunction(id)}} topPosition={'70%'} leftPosition={'75%'} size={'small'}/>
     </div>
     )
 }

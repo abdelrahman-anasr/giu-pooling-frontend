@@ -139,6 +139,14 @@ export default function Results() {
     }
     else if(areaError || resultsError || miniUsersError || fetchMyDetailsError || fetchAllCarsError)
     {
+        if(areaError.message === 'Unauthorized' || resultsError.message === 'Unauthorized' || miniUsersError.message === 'Unauthorized' || fetchMyDetailsError.message === 'Unauthorized' || fetchAllCarsError.message === 'Unauthorized')
+        {
+            return (
+                <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
+                <div style={{width: 900, height: 115, left: '12%', top: 315, position: 'absolute', color: 'black', fontSize: 96, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>You are Unauthorized to access this page</div>
+                </div>
+            );
+        }
         return (
             <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
             <div style={{width: 510, height: 115, left: '12%', top: 315, position: 'absolute', color: 'black', fontSize: 96, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>ERROR</div>

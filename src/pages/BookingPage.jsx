@@ -168,6 +168,15 @@ export default function BookingPage() {
 
     if(fetchMyDetailsError ||fetchRideError || fetchAllCarsError || miniUsersError || allSubzonesError || fetchMyBookingsError || fetchMyRequestsError)
     {
+        if(fetchMyDetailsError.message === 'Unauthorized' || fetchRideError.message === 'Unauthorized' || fetchAllCarsError.message === 'Unauthorized' || miniUsersError.message === 'Unauthorized' || allSubzonesError.message === 'Unauthorized' || fetchMyBookingsError.message === 'Unauthorized' || fetchMyRequestsError.message === 'Unauthorized')
+        {
+            return (
+                <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
+                <div style={{width: 900, height: 115, left: '12%', top: 315, position: 'absolute', color: 'black', fontSize: 96, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>You are Unauthorized to access this page</div>
+                </div>
+            );
+        }
+        
         console.log("All subzones error is:" , allSubzonesError);
         return (
             <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>

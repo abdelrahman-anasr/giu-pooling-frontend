@@ -82,7 +82,7 @@ export default function ComplaintsSubmit() {
 
   if(fetchMyDetailsError)
   {
-    if(fetchMyDetailsError === 'Unauthorized')
+    if(fetchMyDetailsError.message === 'Unauthorized')
     {
       return (
         <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>

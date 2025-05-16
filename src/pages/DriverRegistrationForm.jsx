@@ -6,8 +6,15 @@ import FormInput from "../elements/FormInput";
 import FileDropBox from "../elements/FileDropBox";
 import SubmitButton from "../elements/SubmitButton";
 import SuccessMessage from "../elements/SuccessMessage";
-
+import { ApolloClient , InMemoryCache , ApolloProvider , gql, useQuery , useMutation , useLazyQuery} from '@apollo/client';
 const ENDPOINT = "https://userservice-production-63de.up.railway.app/graphql";
+
+
+const client = new ApolloClient({
+  uri: "https://userservice-production-63de.up.railway.app/graphql",
+  cache: new InMemoryCache(),
+  credentials: "include",
+});
 
 export default function DriverRegistrationForm() {
   const [universityId, setUniversityId] = useState(null);
@@ -19,6 +26,27 @@ export default function DriverRegistrationForm() {
   const [carLicenseFile, setCarLicenseFile] = useState(null);
   const [status, setStatus] = useState("form");
   const [error, setError] = useState("");
+
+  const FETCH_DETAILS_QUERY = gql`
+  query FetchMyDetails{
+    fetchMyDetails{
+        id
+        name
+        email
+        universityId
+        gender
+        phoneNumber
+        isEmailVerified
+        role
+        createdAt
+        updatedAt
+    }
+  }`;
+
+  const {data : fetchMyDetailsData, loading : fetchMyDetailsLoading, error : fetchMyDetailsError} = useQuery(FETCH_DETAILS_QUERY , {client: client});
+
+
+
 
   // Fetch universityId when component mounts
   useEffect(() => {
@@ -88,6 +116,43 @@ export default function DriverRegistrationForm() {
   }
 `;
 
+  if(fetchMyDetailsLoading)
+  {
+    return (
+      <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
+        <div style={{width: 510, height: 115, left: '12%', top: 315, position: 'absolute', color: 'black', fontSize: 96, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>LOADING...</div>
+      </div>
+    );
+  }
+
+  if(fetchMyDetailsError)
+  {
+    if(fetchMyDetailsError.message === "Unauthorized")
+    {
+      return (
+        <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
+          <div style={{width: 900, height: 115, left: '12%', top: 315, position: 'absolute', color: 'black', fontSize: 96, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>You are Unauthorized to access this page</div>
+        </div>
+      );
+    }
+    return (
+        <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
+          <div style={{width: 900, height: 115, left: '12%', top: 315, position: 'absolute', color: 'black', fontSize: 96, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>ERROR</div>
+        </div>
+    );
+  }
+
+  const user = fetchMyDetailsData.fetchMyDetails;
+  const role = user.role;
+
+  if(role === "driver")
+  {
+    return (
+        <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
+          <div style={{width: 900, height: 115, left: '12%', top: 315, position: 'absolute', color: 'black', fontSize: 96, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>You are already a driver</div>
+        </div>
+    );
+  }
 const variables = {
   universityId,
   file: null,

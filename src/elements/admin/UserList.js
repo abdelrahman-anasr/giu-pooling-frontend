@@ -4,7 +4,7 @@ import "../../styles/Common.css";
 
 // Apollo Client setup with enhanced debugging and error handling
 const userClient = new ApolloClient({
-  uri: "http://localhost:4000/graphql", // Make sure this URL is correct
+  uri: "https://userservice-production-63de.up.railway.app/graphql", // Make sure this URL is correct
   cache: new InMemoryCache(),
   credentials: "include", // Send cookies with requests
   headers: {

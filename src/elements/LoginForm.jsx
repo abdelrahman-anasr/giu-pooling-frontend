@@ -1,12 +1,37 @@
 import React, { useState, } from 'react';
 import { Link } from 'react-router-dom';
+import { useQuery, useMutation, gql, ApolloClient, InMemoryCache, ApolloProvider, useLazyQuery } from "@apollo/client";
 import { useNavigate } from 'react-router-dom';
+
+const client = new ApolloClient({
+  uri: "https://userservice-production-63de.up.railway.app/graphql",
+    cache: new InMemoryCache(),
+    credentials: 'include',
+});
 const LoginForm = () => {
   const navigate = useNavigate();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+
+      const FETCH_DETAILS_QUERY = gql`
+    query FetchMyDetails{
+        fetchMyDetails{
+            id
+            name
+            email
+            universityId
+            gender
+            phoneNumber
+            isEmailVerified
+            role
+            createdAt
+            updatedAt
+        }
+    }`;
+
+    const [fetchMyDetails , {data : fetchMyDetailsData, loading : fetchMyDetailsLoading, error : fetchMyDetailsError}] = useLazyQuery(FETCH_DETAILS_QUERY , {client: client});
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -19,6 +44,10 @@ const LoginForm = () => {
         }
       }
     `;
+
+
+
+
 
     const variables = { email, password };
 
@@ -34,10 +63,25 @@ const LoginForm = () => {
 
       const result = await response.json();
 
+      await fetchMyDetails();
+
+      const myData = fetchMyDetailsData.fetchMyDetails;
+
+      const role = myData.role;
+
       if (result.data?.login?.token) {
-        navigate('/dashboard');
-        window.location.reload();
-        localStorage.setItem('token', result.data.login.token);
+        if(role === "admin")
+        {
+          navigate('/admindashboard');
+          window.location.reload();
+          localStorage.setItem('token', result.data.login.token);
+        }
+        else
+        {
+          navigate('/dashboard');
+          window.location.reload();
+          localStorage.setItem('token', result.data.login.token);
+        }
       } else {
         setError(result.errors?.[0]?.message || 'Login failed');
       }

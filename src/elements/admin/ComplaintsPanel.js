@@ -4,7 +4,7 @@ import "../../styles/Common.css";
 
 // Create client with the correct endpoint
 const complaintsClient = new ApolloClient({
-  uri: "http://localhost:4000/graphql", // Use the correct GraphQL endpoint
+  uri: "https://userservice-production-63de.up.railway.app/graphql", // Use the correct GraphQL endpoint
   cache: new InMemoryCache(),
   credentials: "include",
   headers: {

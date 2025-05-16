@@ -10,7 +10,6 @@ import ApproveButton from "../elements/approve-button";
 
 const client  = new ApolloClient({
     uri: 'https://userservice-production-63de.up.railway.app/graphql',
-    cache: new InMemoryCache(),
     credentials: 'include',
 });
 

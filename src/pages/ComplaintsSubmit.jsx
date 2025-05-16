@@ -20,8 +20,9 @@ export default function ComplaintsSubmit() {
   const [complaintSubject , setComplaintSubject] = useState("");
   const [complaintDescription , setComplaintDescription] = useState("");
 
-  const navigateToDashboard = () => {
-    navigate("/dashboard");
+  const navigateToComplaints = () => {
+    navigate("/complaints");
+    window.location.reload();
   };
 
   const FETCH_DETAILS_QUERY = gql`
@@ -67,7 +68,7 @@ export default function ComplaintsSubmit() {
     setSuccess(true);
 
     setTimeout(() => {
-      navigateToDashboard();
+      navigateToComplaints();
     }, 3200);
   };
 

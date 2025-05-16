@@ -182,8 +182,8 @@ const DashboardPage = () => {
         id
         studentId
         rideId
-        subZoneName
         status
+        subZoneName
         price
       }
     }
@@ -195,8 +195,8 @@ const DashboardPage = () => {
         id
         studentId
         rideId
-        subZoneName
         status
+        subZoneName
         price
       }
     }`;

@@ -85,9 +85,9 @@ export default function Notification() {
         );
     }
 
-    if(fetchMyDetailsError || fetchMyNotificationsError)
+    if(fetchMyNotificationsError)
     {
-        if(fetchMyDetailsError.message === 'Unauthorized' || fetchMyNotificationsError.message === 'Unauthorized')
+        if(fetchMyNotificationsError.message === 'Unauthorized')
         {
             return (
                 <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>

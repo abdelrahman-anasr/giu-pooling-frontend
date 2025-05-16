@@ -87,6 +87,8 @@ export default function Notification() {
     {
         if(fetchMyDetailsError.message === 'Unauthorized' || fetchMyNotificationsError.message === 'Unauthorized')
         {
+            console.log("fetchMyDetailsError Error is:" , fetchMyDetailsError);
+            console.log("fetchMyNotificationsError Error is:" , fetchMyNotificationsError);
             return (
                 <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
                     <div style={{width: 510, height: 115, left: '12%', top: 315, position: 'absolute', color: 'black', fontSize: 96, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>You are Unauthorized to access this page</div>

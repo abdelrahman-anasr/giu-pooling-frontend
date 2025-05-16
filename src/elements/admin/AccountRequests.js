@@ -105,8 +105,6 @@ const AccountRequests = () => {
             updatedProcessed[request.id] = 'APPROVED';
           }
         });
-        
-        setProcessedRequests(updatedProcessed);
       }
     }
   }, [userData, data, processedRequests]);

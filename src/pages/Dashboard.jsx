@@ -271,11 +271,6 @@ const DashboardPage = () => {
     rejectRequest({ variables: { id: id }});
   }
 
-  if(role === 'admin')
-  {
-    <AdminDashboard />
-  }
-
 
   if(role === 'driver')
   {
@@ -400,6 +395,16 @@ const DashboardPage = () => {
   
   const username = fetchMyDetailsData.fetchMyDetails.name;
   const firstname = username.split(' ')[0];
+
+  
+  if(role === 'admin')
+  {
+    return (
+      <AdminDashboard />
+    );
+  }
+
+
   if(role === 'driver')
   {
   if(isCurrentOffers)

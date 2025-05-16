@@ -15,7 +15,7 @@ import Register from './pages/register';
 import Complaints from './pages/Complaints';
 import ComplaintsSubmit from './pages/ComplaintsSubmit';
 import Notification from './pages/Notification';
-
+import AdminDashboard from './pages/AdminDashboard';
 
 export default function App() {
   console.log("version is:" , React.version);
@@ -35,6 +35,7 @@ export default function App() {
         <Route path='/complaints' element={<Complaints />} />
         <Route path='/notifications' element={<Notification />} />
         <Route path='/submitcomplaints' element={<ComplaintsSubmit />} />
+        <Route path='/admindashboard' element={<AdminDashboard />} />
       </Routes>
     </div>
   );

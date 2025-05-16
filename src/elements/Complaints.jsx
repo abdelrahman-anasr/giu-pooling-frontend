@@ -220,10 +220,11 @@ const ComplaintsDisplay = ({ setHasData }) => {
   }, [data, error, setHasData]);
 
   const handleDelete = async (id) => {
+    const idNumber = Number(id);
     if (window.confirm("Are you sure you want to delete this complaint?")) {
       try {
         await deleteComplaint({ 
-          variables: { id: Number(id) },
+          variables: { id: idNumber },
           refetchQueries: [{ query: GET_COMPLAINTS }]
         });
       } catch (err) {

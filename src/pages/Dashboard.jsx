@@ -4,6 +4,7 @@ import ChoiceBarCurrentBooking from '../elements/choice-bar-current-booking'
 import ScrollableOffersList from '../elements/offers-list'
 import ScrollableDriverTripsList from '../elements/driver-trip-list'
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ApolloClient , InMemoryCache , ApolloProvider , gql, useQuery , useMutation , useLazyQuery} from '@apollo/client';
 import '../App.css';
 
@@ -11,6 +12,7 @@ import '../App.css';
 
 const DashboardPage = () => {
 
+  const navigate = useNavigate();
   const [isTripStatusSelected, setIsTripStatusSelected] = useState(true);
   const [isCurrentOffers , setIsCurrentOffers] = useState(true);
 
@@ -267,6 +269,11 @@ const DashboardPage = () => {
 
   const rejectRideFunction = async (id) => {
     rejectRequest({ variables: { id: id }});
+  }
+
+  if(role === 'admin')
+  {
+    useNavigate('/admindashboard');
   }
 
 

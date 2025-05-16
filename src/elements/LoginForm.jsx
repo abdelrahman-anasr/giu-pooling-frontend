@@ -77,16 +77,6 @@ const LoginForm = () => {
       }
 
       setTimeout(async () => {
-        await fetchMyDetails();
-
-        if(fetchMyDetailsLoading || fetchMyDetailsData === undefined)
-        {
-          sleep(10000);
-        }
-
-        const myData = fetchMyDetailsData.fetchMyDetails;
-
-        const role = myData.role;
 
           if(role === "admin")
           {

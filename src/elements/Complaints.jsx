@@ -223,7 +223,7 @@ const ComplaintsDisplay = ({ setHasData }) => {
     if (window.confirm("Are you sure you want to delete this complaint?")) {
       try {
         await deleteComplaint({ 
-          variables: { id: id.toString() },
+          variables: { id: Number(id) },
           refetchQueries: [{ query: GET_COMPLAINTS }]
         });
       } catch (err) {

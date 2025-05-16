@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { ApolloClient , InMemoryCache , ApolloProvider , gql, useQuery , useMutation , useLazyQuery} from '@apollo/client';
 import '../App.css';
 import AdminDashboard from './AdminDashboard';
+import ApproveButton from '../elements/approve-button';
 
 
 const DashboardPage = () => {
@@ -404,6 +405,10 @@ const DashboardPage = () => {
     );
   }
 
+  const navigateToCreateRide = async () => {
+    navigate("/createride");
+  }
+
 
   if(role === 'driver')
   {
@@ -431,8 +436,7 @@ const DashboardPage = () => {
     
         <ScrollableOffersList offers={offers} />
     
-        <div style={{width: 340, height: 61, left: 909, top: 2780, position: 'absolute', background: '#FFD281', borderRadius: 70}} />
-        <div style={{width: 206, height: 33, left: 976, top: 2798, position: 'absolute', textAlign: 'center', color: '#111010', fontSize: 20, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>Offer a Ride</div>
+        <ApproveButton label="Offer a Ride" size="large" functionToCall={navigateToCreateRide} topPosition={2780} leftPosition={909} />
         </div>
       );
     }
@@ -457,9 +461,8 @@ const DashboardPage = () => {
         <ChoiceBarCurrentBooking isChoice={isCurrentOffers} setChoice={handleCurrentOffers} firstOption={'Current Offers'} secondOption={'Ride History'} pixelsFromTop={1850} />
     
         <ScrollableOffersList offers={offers} />
-    
-        <div style={{width: 340, height: 61, left: 909, top: 2780, position: 'absolute', background: '#FFD281', borderRadius: 70}} />
-        <div style={{width: 206, height: 33, left: 976, top: 2798, position: 'absolute', textAlign: 'center', color: '#111010', fontSize: 20, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>Offer a Ride</div>
+
+        <ApproveButton label="Offer a Ride" size="large" functionToCall={navigateToCreateRide} topPosition={2780} leftPosition={909} />
         </div>
       );
     }
@@ -487,9 +490,8 @@ const DashboardPage = () => {
       <ChoiceBarCurrentBooking isChoice={isCurrentOffers} setChoice={handleCurrentOffers} firstOption={'Current Offers'} secondOption={'Ride History'} pixelsFromTop={1850} />
   
       <ScrollableDriverTripsList trips={tripsOfDriver} />
-  
-      <div style={{width: 340, height: 61, left: 909, top: 2780, position: 'absolute', background: '#FFD281', borderRadius: 70}} />
-      <div style={{width: 206, height: 33, left: 976, top: 2798, position: 'absolute', textAlign: 'center', color: '#111010', fontSize: 20, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>Offer a Ride</div>
+
+      <ApproveButton label="Offer a Ride" size="large" functionToCall={navigateToCreateRide} topPosition={2780} leftPosition={909} />
     </div>
     );
   }

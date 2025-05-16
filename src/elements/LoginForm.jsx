@@ -79,9 +79,9 @@ const LoginForm = () => {
       setTimeout(async () => {
         await fetchMyDetails();
 
-        if(fetchMyDetailsLoading)
+        if(fetchMyDetailsLoading || fetchMyDetailsData === undefined)
         {
-          await sleep(10000);
+          sleep(10000);
         }
 
         const myData = fetchMyDetailsData.fetchMyDetails;

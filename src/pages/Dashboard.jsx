@@ -196,7 +196,6 @@ const DashboardPage = () => {
         studentId
         rideId
         status
-        subZoneName
         price
       }
     }`;

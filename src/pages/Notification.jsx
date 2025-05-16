@@ -17,7 +17,7 @@ const client = new ApolloClient({
 });
 
 const notificationClient = new ApolloClient({
-    uri: "notificationservice-production-d8cf.up.railway.app/notification",
+    uri: "https://notificationservice-production-d8cf.up.railway.app/notification",
     cache: new InMemoryCache(),
     credentials: 'include'
 });

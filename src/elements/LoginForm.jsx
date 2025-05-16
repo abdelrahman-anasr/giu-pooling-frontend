@@ -2,12 +2,16 @@ import React, { useState, } from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery, useMutation, gql, ApolloClient, InMemoryCache, ApolloProvider, useLazyQuery } from "@apollo/client";
 import { useNavigate } from 'react-router-dom';
+import { set } from 'mongoose';
 
 const client = new ApolloClient({
   uri: "https://userservice-production-63de.up.railway.app/graphql",
     cache: new InMemoryCache(),
     credentials: 'include',
 });
+
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+
 const LoginForm = () => {
   const navigate = useNavigate();
 
@@ -76,6 +80,11 @@ const LoginForm = () => {
       setTimeout(async () => {
         await fetchMyDetails();
 
+        if(fetchMyDetailsLoading)
+        {
+          await sleep(3000);
+        }
+
         const myData = fetchMyDetailsData.fetchMyDetails;
 
         const role = myData.role;
@@ -92,7 +101,7 @@ const LoginForm = () => {
             window.location.reload();
             localStorage.setItem('token', result.data.login.token);
           }
-      }, 5000);
+      }, 1000);
       
     } catch (err) {
       setError('Something went wrong');

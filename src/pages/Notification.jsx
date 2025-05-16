@@ -87,6 +87,7 @@ export default function Notification() {
 
     if(fetchMyNotificationsError)
     {
+        console.log("Error : ", fetchMyNotificationsError);
         if(fetchMyNotificationsError.message === 'Unauthorized')
         {
             return (

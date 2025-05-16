@@ -104,7 +104,9 @@ export default function Navbar() {
             </Link>
         </li>
         <li style={{width: 45, height: 45, left: '95%', top: '22%', position: 'absolute'}}>
-            <img style={{width: 45, height: 45, position: 'absolute'}} src={notificationicon} />
+            <Link to="/notifications" style={{textDecoration: 'none' , color: 'inherit'}}>
+                <img style={{width: 45, height: 45, position: 'absolute'}} src={notificationicon} />
+            </Link>
         </li>
     </ul>
     </div>

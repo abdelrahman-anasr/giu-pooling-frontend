@@ -14,6 +14,9 @@ import Login from './pages/Login';
 import Register from './pages/register';
 import Complaints from './pages/Complaints';
 import ComplaintsSubmit from './pages/ComplaintsSubmit';
+import Notification from './pages/Notification';
+
+
 export default function App() {
   console.log("version is:" , React.version);
   return (
@@ -30,6 +33,7 @@ export default function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/complaints' element={<Complaints />} />
+        <Route path='/notifications' element={<Notification />} />
         <Route path='/submitcomplaints' element={<ComplaintsSubmit />} />
       </Routes>
     </div>

@@ -308,7 +308,7 @@ const RequestManager = () => {
                         onClick={() => {
                           const url = req.licenseURL.startsWith('http') 
                             ? req.licenseURL 
-                            : `http://localhost:4000${req.licenseURL}`;
+                            : `https://userservice-production-63de.up.railway.app/${req.licenseURL}`;
                           
                           const newWindow = window.open('', '_blank');
                           newWindow.document.write(`

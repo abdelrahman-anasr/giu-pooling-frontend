@@ -11,19 +11,19 @@ import ApproveButton from "../elements/approve-button";
 
 
 const client = new ApolloClient({
-  uri: 'http://localhost:4000/graphql',
+  uri: 'https://userservice-production-63de.up.railway.app/graphql',
   cache: new InMemoryCache(),
   credentials: 'include',
 });
 
 const rideClient = new ApolloClient({
-    uri: 'http://localhost:4001/ride',
+    uri: 'https://rideservice-production.up.railway.app/ride',
     cache: new InMemoryCache(),
     credentials: 'include',
 });
 
 const bookingClient = new ApolloClient({
-  uri: 'http://localhost:4002/booking',
+  uri: 'https://bookingservice-production-4772.up.railway.app/booking',
   cache: new InMemoryCache(),
   credentials: 'include',
 });

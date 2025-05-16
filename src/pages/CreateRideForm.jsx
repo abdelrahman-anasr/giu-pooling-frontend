@@ -26,7 +26,7 @@ export default function CreateRideForm({ onSuccess }) {
     setLoading(true);
     setError("");
     
-    fetch("http://localhost:4001/ride", {
+    fetch("https://rideservice-production.up.railway.app/ride", {
       method: "POST",
       headers: { 
         "Content-Type": "application/json",
@@ -84,7 +84,7 @@ export default function CreateRideForm({ onSuccess }) {
     
     const isoTime = form.time ? new Date(form.time).toISOString() : "";
     
-    fetch("http://localhost:4001/ride", {
+    fetch("https://rideservice-production.up.railway.app/ride", {
       method: "POST",
       headers: { 
         "Content-Type": "application/json",

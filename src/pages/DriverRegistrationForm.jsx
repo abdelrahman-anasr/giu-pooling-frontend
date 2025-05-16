@@ -7,7 +7,7 @@ import FileDropBox from "../elements/FileDropBox";
 import SubmitButton from "../elements/SubmitButton";
 import SuccessMessage from "../elements/SuccessMessage";
 
-const ENDPOINT = "http://localhost:4000/graphql/";
+const ENDPOINT = "https://userservice-production-63de.up.railway.app/graphql";
 
 export default function DriverRegistrationForm() {
   const [universityId, setUniversityId] = useState(null);

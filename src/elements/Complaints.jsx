@@ -5,7 +5,7 @@ import "../styles/complaint.css";
 
 // Create Apollo Client for Complaints
 const complaintsClient = new ApolloClient({
-  uri: "http://localhost:4000/graphql",
+  uri: "https://userservice-production-63de.up.railway.app/graphql", // Ensure correct GraphQL endpoint
   cache: new InMemoryCache(),
   credentials: "include",
   headers: {

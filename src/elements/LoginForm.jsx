@@ -63,28 +63,37 @@ const LoginForm = () => {
 
       const result = await response.json();
 
-      await fetchMyDetails();
-
-      const myData = fetchMyDetailsData.fetchMyDetails;
-
-      const role = myData.role;
-
-      if (result.data?.login?.token) {
-        if(role === "admin")
-        {
-          navigate('/admindashboard');
-          window.location.reload();
-          localStorage.setItem('token', result.data.login.token);
-        }
-        else
-        {
-          navigate('/dashboard');
-          window.location.reload();
-          localStorage.setItem('token', result.data.login.token);
-        }
-      } else {
+      if(!result.data?.login?.token)
+      {
         setError(result.errors?.[0]?.message || 'Login failed');
+        return;
       }
+      else
+      {
+        localStorage.setItem('token', result.data.login.token);
+      }
+
+      setTimeout(async () => {
+        await fetchMyDetails();
+
+        const myData = fetchMyDetailsData.fetchMyDetails;
+
+        const role = myData.role;
+
+          if(role === "admin")
+          {
+            navigate('/admindashboard');
+            window.location.reload();
+            localStorage.setItem('token', result.data.login.token);
+          }
+          else
+          {
+            navigate('/dashboard');
+            window.location.reload();
+            localStorage.setItem('token', result.data.login.token);
+          }
+      }, 5000);
+      
     } catch (err) {
       setError('Something went wrong');
       console.error(err);

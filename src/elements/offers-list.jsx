@@ -15,7 +15,7 @@ export default function ScrollableOffersList({offers}) {
                 {
                     percent += 40;
                 }
-                return <OfferInfoCard id={offer.id} tripId={offer.tripId} location={offer.location} departureTime={offer.departureTime} price={offer.price} percentTop={percent} />
+                return <OfferInfoCard id={offer.id} tripId={offer.tripId} location={offer.location} departureTime={offer.departureTime} acceptFunction={offer.acceptFunction} rejectFunction={offer.rejectFunction} price={offer.price} percentTop={percent} />
             })}
         </div>
     );

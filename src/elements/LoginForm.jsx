@@ -36,6 +36,7 @@ const LoginForm = () => {
 
       if (result.data?.login?.token) {
         navigate('/dashboard');
+        window.location.reload();
         localStorage.setItem('token', result.data.login.token);
       } else {
         setError(result.errors?.[0]?.message || 'Login failed');

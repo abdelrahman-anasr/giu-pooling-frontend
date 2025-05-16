@@ -81,7 +81,7 @@ const LoginForm = () => {
 
         if(fetchMyDetailsLoading)
         {
-          await sleep(3000);
+          await sleep(10000);
         }
 
         const myData = fetchMyDetailsData.fetchMyDetails;

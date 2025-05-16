@@ -35,7 +35,6 @@ export default function App() {
         <Route path='/complaints' element={<Complaints />} />
         <Route path='/notifications' element={<Notification />} />
         <Route path='/submitcomplaints' element={<ComplaintsSubmit />} />
-        <Route path='/admindashboard' element={<AdminDashboard />} />
       </Routes>
     </div>
   );

@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ApolloClient , InMemoryCache , ApolloProvider , gql, useQuery , useMutation , useLazyQuery} from '@apollo/client';
 import '../App.css';
-
+import AdminDashboard from './AdminDashboard';
 
 
 const DashboardPage = () => {
@@ -273,7 +273,7 @@ const DashboardPage = () => {
 
   if(role === 'admin')
   {
-    useNavigate('/admindashboard');
+    <AdminDashboard />
   }
 
 

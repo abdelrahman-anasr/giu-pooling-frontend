@@ -78,7 +78,7 @@ const AccountRequests = () => {
   const [stats, setStats] = useState({ total: 0, today: 0 });
   
   // Track processed requests for UI display purposes
-  const [processedRequests, setProcessedRequests] = useState({});
+  const [processedRequests, setProcessedRequests] = useState();
   
   // Get all user emails and university IDs for detecting approved requests
   useEffect(() => {

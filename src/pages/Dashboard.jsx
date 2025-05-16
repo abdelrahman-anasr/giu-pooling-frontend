@@ -491,7 +491,7 @@ const DashboardPage = () => {
   
       <ScrollableDriverTripsList trips={tripsOfDriver} />
 
-      <ApproveButton label="Offer a Ride" size="wide" functionToCall={navigateToCreateRide} topPosition={2780} leftPosition={909} />
+      <ApproveButton label="Offer a Ride" size="offer" functionToCall={navigateToCreateRide} topPosition={2780} leftPosition={909} />
     </div>
     );
   }

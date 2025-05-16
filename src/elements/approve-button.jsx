@@ -33,4 +33,13 @@ export default function ApproveButton({label , size , functionToCall , topPositi
             </button>
         );
     }
+    else if(size === 'offer')
+    {
+        return (
+            <button className="approve-button" onClick={() => {functionToCall()}} style={{width: 350, height: 61, left: leftPosition, top: topPosition, position: 'absolute'}}>    
+            <div style={{width: 230, height: 33, left: 62, top: 13, position: 'absolute', color: 'black', fontSize: 25, fontFamily: 'IBM Plex Sans', fontWeight: 700, wordWrap: 'break-word', textAlign: 'center'}}>{label}
+            </div>
+            </button>
+        )
+    }
  }

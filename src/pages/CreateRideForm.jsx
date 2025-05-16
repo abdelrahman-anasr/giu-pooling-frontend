@@ -1,10 +1,17 @@
 import React, { useState, useEffect } from "react";
+import {ApolloClient, InMemoryCache, ApolloProvider , gql , useQuery} from "@apollo/client";
 import FormBox from "../elements/FormBox";
 import FormContainer from "../elements/FormContainer";
 import FormRow from "../elements/FormRow";
 import FormInput from "../elements/FormInput";
 import SubmitButton from "../elements/SubmitButton";
 import SuccessRide from "../elements/SuccessRide";
+
+const client = new ApolloClient({
+  uri: 'https://userservice-production-63de.up.railway.app/graphql',
+  cache: new InMemoryCache(),
+  credentials: 'include',
+});
 
 export default function CreateRideForm({ onSuccess }) {
   const [areas, setAreas] = useState([]);
@@ -191,15 +198,6 @@ export default function CreateRideForm({ onSuccess }) {
                 max="7"
                 style={styles.input}
                 required
-              />
-            </FormRow>
-            <FormRow>
-              <label style={styles.label}>Price</label>
-              <input 
-                type="text" 
-                value={price} 
-                disabled 
-                style={styles.input}
               />
             </FormRow>
             <FormRow>

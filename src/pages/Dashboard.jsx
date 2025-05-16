@@ -169,8 +169,8 @@ const DashboardPage = () => {
         id
         studentId
         rideId
-        subZoneName
         status
+        subZoneName
         price
     }
   }
@@ -293,6 +293,8 @@ const DashboardPage = () => {
     }
     rides = fetchMyRidesData.fetchMyRides;
 
+    console.log("Fetch requests data is:" , fetchRequestsForAllMyRidesData);
+    console.log("Fetch Requests is:" , fetchRequestsForAllMyRidesData.fetchRequestsForAllMyRides);
     const requests = fetchRequestsForAllMyRidesData.fetchRequestsForAllMyRides;
 
     for(let i = 0; i < requests.length; i++)

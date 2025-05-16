@@ -2,7 +2,6 @@ import React, { useState, } from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery, useMutation, gql, ApolloClient, InMemoryCache, ApolloProvider, useLazyQuery } from "@apollo/client";
 import { useNavigate } from 'react-router-dom';
-import { set } from 'mongoose';
 
 const client = new ApolloClient({
   uri: "https://userservice-production-63de.up.railway.app/graphql",

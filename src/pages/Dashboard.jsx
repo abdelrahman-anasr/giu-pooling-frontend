@@ -239,7 +239,7 @@ const DashboardPage = () => {
 
   if(fetchAllRidesError || fetchMyDetailsError || fetchMyBookingsError || fetchMyRequestsError || fetchAllRidesError || fetchAllCarsError || fetchMiniUsersError)
   {
-    if(fetchAllRidesError === 'Unauthorized' || fetchMyDetailsError === 'Unauthorized' || fetchMyBookingsError === 'Unauthorized' || fetchMyRequestsError === 'Unauthorized' || fetchAllRidesError === 'Unauthorized' || fetchAllCarsError === 'Unauthorized' || fetchMiniUsersError === 'Unauthorized')
+    if(fetchAllRidesError.message === 'Unauthorized' || fetchMyDetailsError.message === 'Unauthorized' || fetchMyBookingsError.message === 'Unauthorized' || fetchMyRequestsError.message === 'Unauthorized' || fetchAllRidesError.message === 'Unauthorized' || fetchAllCarsError.message === 'Unauthorized' || fetchMiniUsersError.message === 'Unauthorized')
     {
       return (
         <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>

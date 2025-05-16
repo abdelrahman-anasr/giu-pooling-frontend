@@ -77,19 +77,9 @@ const LoginForm = () => {
       }
 
       setTimeout(async () => {
-
-          if(role === "admin")
-          {
-            navigate('/admindashboard');
-            window.location.reload();
-            localStorage.setItem('token', result.data.login.token);
-          }
-          else
-          {
             navigate('/dashboard');
             window.location.reload();
             localStorage.setItem('token', result.data.login.token);
-          }
       }, 1000);
       
     } catch (err) {

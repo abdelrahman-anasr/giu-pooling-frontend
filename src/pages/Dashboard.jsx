@@ -413,6 +413,10 @@ const DashboardPage = () => {
     navigate("/edituser");
   }
 
+  const navigateToDriverRegistration = async () => {
+    navigate("/driverregistration");
+  }
+
 
   if(role === 'driver')
   {
@@ -514,6 +518,7 @@ const DashboardPage = () => {
         <div style={{width: 1060, height: 81, left: '12%', top: 1737, position: 'absolute', color: 'black', fontSize: 62, fontFamily: 'IBM Plex Sans', fontWeight: '600', wordWrap: 'break-word'}}>Driver Dashboard</div>
         <div style={{width: '70%', height: 0, left: '12%', top: 1718, position: 'absolute', outline: '5px black solid', outlineOffset: '-2.50px'}}></div>
         <div style={{width: 1300, height: 81, left: '12%', top: 1800, position: 'absolute', color: 'black', fontSize: 50, fontFamily: 'IBM Plex Sans', fontWeight: '300', wordWrap: 'break-word'}}>You are not a driver. To Sign up Please Fill the Registration Form</div>
+        <ApproveButton label="Register" size="offer" functionToCall={navigateToDriverRegistration} topPosition={1900} leftPosition={909} />
         </div>
       );
     }
@@ -533,6 +538,7 @@ const DashboardPage = () => {
         <div style={{width: 1060, height: 81, left: '12%', top: 1737, position: 'absolute', color: 'black', fontSize: 62, fontFamily: 'IBM Plex Sans', fontWeight: '600', wordWrap: 'break-word'}}>Driver Dashboard</div>
         <div style={{width: '70%', height: 0, left: '12%', top: 1718, position: 'absolute', outline: '5px black solid', outlineOffset: '-2.50px'}}></div>
         <div style={{width: 1300, height: 81, left: '12%', top: 1800, position: 'absolute', color: 'black', fontSize: 50, fontFamily: 'IBM Plex Sans', fontWeight: '300', wordWrap: 'break-word'}}>You are not a driver. To Sign up Please Fill the Registration Form</div>
+        <ApproveButton label="Register" size="offer" functionToCall={navigateToDriverRegistration} topPosition={1900} leftPosition={909} />
         </div>
       );
     }

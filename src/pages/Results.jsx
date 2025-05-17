@@ -81,6 +81,18 @@ export default function Results() {
         }
     }`;
 
+    const FETCH_REQUESTS_QUERY = gql`
+    query FetchMyRequests {
+        fetchMyRequests {
+            id
+            studentId
+            rideId
+            status
+            price
+        }
+    }
+    `;
+
     const ALL_AREAS_QUERY = gql`
         query FetchAllAreas {
             fetchAllAreas {
@@ -142,6 +154,8 @@ export default function Results() {
 
     const {data : fetchMyBookingsData, loading : fetchMyBookingsLoading, error : fetchMyBookingsError} = useQuery(FETCH_BOOKINGS_QUERY , {client: bookingClient});
 
+    const {data : fetchMyRequestsData, loading : fetchMyRequestsLoading, error : fetchMyRequestsError} = useQuery(FETCH_REQUESTS_QUERY , {client: bookingClient});
+
     const { loading: areaLoading, error: areaError, data: areaData } = useQuery(ALL_AREAS_QUERY , {client: rideClient});
 
     const { loading: resultsLoading, error: resultsError, data: resultsData } = useQuery(RESULTS_QUERY , {client: rideClient, variables: {areaName: locationValue, fromGiu: fromToBoolean, girlsOnly: girlsOnly}});
@@ -150,16 +164,16 @@ export default function Results() {
 
     const { loading: miniUsersLoading, error: miniUsersError, data: miniUsersData } = useQuery(MINI_USERS_QUERY , {client: client});
 
-    if(areaLoading || resultsLoading || miniUsersLoading || fetchMyDetailsLoading || fetchAllCarsLoading || fetchMyBookingsLoading) {
+    if(areaLoading || resultsLoading || miniUsersLoading || fetchMyDetailsLoading || fetchAllCarsLoading || fetchMyBookingsLoading || fetchMyRequestsLoading) {
         return (
             <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
             <div style={{width: 510, height: 115, left: '12%', top: 315, position: 'absolute', color: 'black', fontSize: 96, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>LOADING...</div>
             </div>
         );
     }
-    else if(areaError || resultsError || miniUsersError || fetchMyDetailsError || fetchAllCarsError || fetchMyBookingsError)
+    else if(areaError || resultsError || miniUsersError || fetchMyDetailsError || fetchAllCarsError || fetchMyBookingsError || fetchMyRequestsError)
     {
-        if((areaError !== undefined && areaError.message === 'Unauthorized') || (resultsError !== undefined && resultsError.message === 'Unauthorized') || (miniUsersError !== undefined && miniUsersError.message === 'Unauthorized') || (fetchMyDetailsError !== undefined && fetchMyDetailsError.message === 'Unauthorized') || (fetchAllCarsError !== undefined && fetchAllCarsError.message === 'Unauthorized') || (fetchMyBookingsError !== undefined && fetchMyBookingsError.message === 'Unauthorized'))
+        if((areaError !== undefined && areaError.message === 'Unauthorized') || (resultsError !== undefined && resultsError.message === 'Unauthorized') || (miniUsersError !== undefined && miniUsersError.message === 'Unauthorized') || (fetchMyDetailsError !== undefined && fetchMyDetailsError.message === 'Unauthorized') || (fetchAllCarsError !== undefined && fetchAllCarsError.message === 'Unauthorized') || (fetchMyBookingsError !== undefined && fetchMyBookingsError.message === 'Unauthorized') || (fetchMyRequestsError !== undefined && fetchMyRequestsError.message === 'Unauthorized'))
         {
             return (
                 <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
@@ -218,10 +232,15 @@ export default function Results() {
     }
 
     const userBookings = fetchMyBookingsData.fetchMyBookings;
+    const userRequests = fetchMyRequestsData.fetchMyRequests;
     let userBookingIds = [];
     userBookings.forEach(booking => {
         userBookingIds.push(booking.rideId);
     });
+    userRequests.forEach(request => {
+        userBookingIds.push(request.rideId);
+    });
+
 
     resultsData.fetchRideByCriteria.forEach(ride => {
         if(!userBookingIds.includes(ride.id))

@@ -17,7 +17,7 @@ import ComplaintsSubmit from './pages/ComplaintsSubmit';
 import Notification from './pages/Notification';
 import CreateRideForm from './pages/CreateRideForm';
 import DriverRegistrationForm from './pages/DriverRegistrationForm';
-
+import VerifyAccount from './pages/verifyAccount';
 export default function App() {
   console.log("version is:" , React.version);
   return (
@@ -38,6 +38,7 @@ export default function App() {
         <Route path='/submitcomplaints' element={<ComplaintsSubmit />} />
         <Route path='/driverregistration' element={<DriverRegistrationForm />} />
         <Route path='/createride' element={<CreateRideForm />} />
+        <Route path='/verify-account' element={<VerifyAccount />} />
         
       </Routes>
     </div>

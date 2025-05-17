@@ -89,8 +89,9 @@ function EditUserFormChild({data}) {
     const [errorMessage, setErrorMessage] = useState("");
 
     const UPDATE_MY_USER_MUTATION = gql`
-    mutation UpdateMyUser($name : String!, $email : String!, $phoneNumber : String!) {
-        updateMyUser(name: $name, email: $email, phoneNumber: $phoneNumber) {
+    mutation UpdateMyUser($name: String!, $email: String!, $phoneNumber: String!) {
+        updateMyUser(name: $name, email: $email, phoneNumber: $phoneNumber)
+        {
             id
             name
             email

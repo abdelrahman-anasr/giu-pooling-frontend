@@ -424,7 +424,7 @@ const DashboardPage = () => {
         <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
         <div style={{width: 510, height: 115, left: '12%', top: 315, position: 'absolute', color: 'black', fontSize: 96, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>Dashboard</div>
         <div style={{width: 1060, height: 81, left: '12%', top: 445, position: 'absolute', color: 'black', fontSize: 62, fontFamily: 'IBM Plex Sans', fontWeight: '600', wordWrap: 'break-word'}}>Welcome , {firstname}!</div>
-        <ApproveButton label="Edit User" size="offer" functionToCall={navigateToEditUser} topPosition={445} leftPosition={1200} />
+        <ApproveButton label="Edit User" size="offer" functionToCall={navigateToEditUser} topPosition={445} leftPosition={1000} />
         <div style={{width: '70%', height: 0, left: '12%', top: 560.90, position: 'absolute', outline: '5px black solid', outlineOffset: '-2.50px'}}></div>
         <div style={{width: 1060, height: 81, left: '12%', top: 596, position: 'absolute', color: 'black', fontSize: 62, fontFamily: 'IBM Plex Sans', fontWeight: '600', wordWrap: 'break-word'}}>Passenger Dashboard</div>
     
@@ -449,7 +449,7 @@ const DashboardPage = () => {
         <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
         <div style={{width: 510, height: 115, left: '12%', top: 315, position: 'absolute', color: 'black', fontSize: 96, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>Dashboard</div>
         <div style={{width: 1060, height: 81, left: '12%', top: 445, position: 'absolute', color: 'black', fontSize: 62, fontFamily: 'IBM Plex Sans', fontWeight: '600', wordWrap: 'break-word'}}>Welcome , {firstname}!</div>
-        <ApproveButton label="Edit User" size="offer" functionToCall={navigateToEditUser} topPosition={445} leftPosition={1200} />
+        <ApproveButton label="Edit User" size="offer" functionToCall={navigateToEditUser} topPosition={445} leftPosition={1000} />
         <div style={{width: '70%', height: 0, left: '12%', top: 560.90, position: 'absolute', outline: '5px black solid', outlineOffset: '-2.50px'}}></div>
         <div style={{width: 1060, height: 81, left: '12%', top: 596, position: 'absolute', color: 'black', fontSize: 62, fontFamily: 'IBM Plex Sans', fontWeight: '600', wordWrap: 'break-word'}}>Passenger Dashboard</div>
     
@@ -475,7 +475,7 @@ const DashboardPage = () => {
       <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
       <div style={{width: 510, height: 115, left: '12%', top: 315, position: 'absolute', color: 'black', fontSize: 96, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>Dashboard</div>
       <div style={{width: 1060, height: 81, left: '12%', top: 445, position: 'absolute', color: 'black', fontSize: 62, fontFamily: 'IBM Plex Sans', fontWeight: '600', wordWrap: 'break-word'}}>Welcome , {firstname}!</div>
-      <ApproveButton label="Edit User" size="offer" functionToCall={navigateToEditUser} topPosition={445} leftPosition={1200} />
+      <ApproveButton label="Edit User" size="offer" functionToCall={navigateToEditUser} topPosition={445} leftPosition={1000} />
       <div style={{width: '70%', height: 0, left: '12%', top: 560.90, position: 'absolute', outline: '5px black solid', outlineOffset: '-2.50px'}}></div>
       <div style={{width: 1060, height: 81, left: '12%', top: 596, position: 'absolute', color: 'black', fontSize: 62, fontFamily: 'IBM Plex Sans', fontWeight: '600', wordWrap: 'break-word'}}>Passenger Dashboard</div>
   
@@ -504,7 +504,7 @@ const DashboardPage = () => {
         <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
         <div style={{width: 510, height: 115, left: '12%', top: 315, position: 'absolute', color: 'black', fontSize: 96, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>Dashboard</div>
         <div style={{width: 1060, height: 81, left: '12%', top: 445, position: 'absolute', color: 'black', fontSize: 62, fontFamily: 'IBM Plex Sans', fontWeight: '600', wordWrap: 'break-word'}}>Welcome , {firstname}!</div>
-        <ApproveButton label="Edit User" size="offer" functionToCall={navigateToEditUser} topPosition={445} leftPosition={1200} />
+        <ApproveButton label="Edit User" size="offer" functionToCall={navigateToEditUser} topPosition={445} leftPosition={1000} />
         <div style={{width: '70%', height: 0, left: '12%', top: 560.90, position: 'absolute', outline: '5px black solid', outlineOffset: '-2.50px'}}></div>
         <div style={{width: 1060, height: 81, left: '12%', top: 596, position: 'absolute', color: 'black', fontSize: 62, fontFamily: 'IBM Plex Sans', fontWeight: '600', wordWrap: 'break-word'}}>Passenger Dashboard</div>
     
@@ -523,7 +523,7 @@ const DashboardPage = () => {
         <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
         <div style={{width: 510, height: 115, left: '12%', top: 315, position: 'absolute', color: 'black', fontSize: 96, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>Dashboard</div>
         <div style={{width: 1060, height: 81, left: '12%', top: 445, position: 'absolute', color: 'black', fontSize: 62, fontFamily: 'IBM Plex Sans', fontWeight: '600', wordWrap: 'break-word'}}>Welcome , {firstname}!</div>
-        <ApproveButton label="Edit User" size="offer" functionToCall={navigateToEditUser} topPosition={445} leftPosition={1200} />
+        <ApproveButton label="Edit User" size="offer" functionToCall={navigateToEditUser} topPosition={445} leftPosition={1000} />
         <div style={{width: '70%', height: 0, left: '12%', top: 560.90, position: 'absolute', outline: '5px black solid', outlineOffset: '-2.50px'}}></div>
         <div style={{width: 1060, height: 81, left: '12%', top: 596, position: 'absolute', color: 'black', fontSize: 62, fontFamily: 'IBM Plex Sans', fontWeight: '600', wordWrap: 'break-word'}}>Passenger Dashboard</div>
     

@@ -436,7 +436,7 @@ const DashboardPage = () => {
     
         <ScrollableOffersList offers={offers} />
     
-        <ApproveButton label="Offer a Ride" size="large" functionToCall={navigateToCreateRide} topPosition={2780} leftPosition={909} />
+        <ApproveButton label="Offer a Ride" size="offer" functionToCall={navigateToCreateRide} topPosition={2780} leftPosition={909} />
         </div>
       );
     }
@@ -462,7 +462,7 @@ const DashboardPage = () => {
     
         <ScrollableOffersList offers={offers} />
 
-        <ApproveButton label="Offer a Ride" size="large" functionToCall={navigateToCreateRide} topPosition={2780} leftPosition={909} />
+        <ApproveButton label="Offer a Ride" size="offer" functionToCall={navigateToCreateRide} topPosition={2780} leftPosition={909} />
         </div>
       );
     }

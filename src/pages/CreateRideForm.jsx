@@ -188,19 +188,6 @@ export default function CreateRideForm({ onSuccess }) {
               </select>
             </FormRow>
             <FormRow>
-              <label style={styles.label}>Seats</label>
-              <input 
-                type="number" 
-                name="seats"
-                value={form.seats} 
-                onChange={handleChange}
-                min="1"
-                max="7"
-                style={styles.input}
-                required
-              />
-            </FormRow>
-            <FormRow>
               <label style={styles.label}>Departure Time</label>
               <input
                 type="datetime-local"

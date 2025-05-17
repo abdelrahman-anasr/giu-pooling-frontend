@@ -52,7 +52,7 @@ export default function VerifyAccount() {
 
   const {data : fetchMyDetailsData, loading : fetchMyDetailsLoading, error : fetchMyDetailsError} = useQuery(FETCH_DETAILS_QUERY , {client: client});
 
-  const [verifyAccount, { verifyAccountData, verifyAccountLoading, verifyAccountError }] = useQuery(VERIFY_ACCOUNT_QUERY , {variables: {Code: codeNumber} , client: client});
+  const {data : verifyAccountData, loading : verifyAccountLoading, error : verifyAccountError} = useQuery(VERIFY_ACCOUNT_QUERY , {client: client, variables: {Code: codeNumber}});
 
   if(fetchMyDetailsLoading)
   {

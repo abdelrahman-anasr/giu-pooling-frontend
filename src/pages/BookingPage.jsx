@@ -66,7 +66,7 @@ export default function BookingPage() {
 
     const MINI_USERS_QUERY = gql`
     query MiniUsers {
-        MiniUsers {
+        Miniusers {
             universityId
             name
         }

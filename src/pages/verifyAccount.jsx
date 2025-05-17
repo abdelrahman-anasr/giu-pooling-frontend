@@ -89,8 +89,10 @@ export default function VerifyAccount() {
             </div>
         );
     }
-    else if(verifyAccountError)
+    
+    if(verifyAccountError)
     {
+        console.log("Verify account error is:" , verifyAccountError);
         if(verifyAccountError.message === 'Unauthorized')
         {
             return (

@@ -1,7 +1,7 @@
 import "../App.css";
 import { useState , setState } from 'react';
 import { ApolloClient , InMemoryCache , ApolloProvider , gql, useQuery , useMutation , useLazyQuery} from '@apollo/client';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import RideBookingCard from "../elements/ride-booking-card";
 import TextBox from "../elements/text-box";
@@ -30,6 +30,8 @@ const bookingClient = new ApolloClient({
 
 
 export default function BookingPage() {
+
+    const navigate = useNavigate();
     const [searchParams , setSearchParams] = useSearchParams();
 
     const [subzoneValue , setSubzoneValue] = useState('Select Subzone');
@@ -263,6 +265,7 @@ export default function BookingPage() {
                 paymentOption: paymentOption
             }
         });
+        navigate('/dashboard');
     }
 
     if(!paymentScreenOpened)

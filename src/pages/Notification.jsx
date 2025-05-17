@@ -2,11 +2,6 @@ import "../App.css";
 import { useEffect, useState } from "react";
 import { ApolloClient , InMemoryCache , ApolloProvider , gql, useQuery , useMutation , useLazyQuery} from '@apollo/client';
 import { useNavigate } from "react-router-dom";
-import ScrollableComplaintsList from "../elements/scrollable-complaints-list";
-import ScrollableAdminResponsesList from "../elements/scrollable-admin-responses-list";
-import AdminResponseCard from "../elements/admin-response-card";
-import ApproveButton from "../elements/approve-button";
-import NotificationSidebarCard from "../elements/notifications-sidebar-card";
 import ScrollableNotificationsSidebar from "../elements/scrollable-notifications-sidebar";
 
 

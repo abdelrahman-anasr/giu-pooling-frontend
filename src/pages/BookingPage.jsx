@@ -257,7 +257,7 @@ export default function BookingPage() {
     }
 
     const createRequestFunction = async () => {
-        const paymentOption = cashOptionSelected ? 'Cash' : 'Visa';
+        const paymentOption = cashOptionSelected ? 'Payment in Cash' : 'Visa';
         createRequestMutation({
             variables: {
                 rideId: ride.id,

@@ -196,7 +196,7 @@ export default function BookingPage() {
     const userId = JSON.stringify(details.fetchMyDetails.universityId);
 
     const ride = fetchRideData.fetchRide;
-    const driversName = miniUsersData.MiniUsers.find(user => user.universityId.toString() === ride.driverId.toString()).name;
+    const driversName = miniUsersData.Miniusers.find(user => user.universityId.toString() === ride.driverId.toString()).name;
     const carType = fetchAllCarsData.cars.find(car => car.DriverId.toString() === ride.driverId.toString()).carModel;
 
     const zones = allSubzonesData.fetchAllSubzones.filter(subzone => subzone.areaName === ride.areaName);

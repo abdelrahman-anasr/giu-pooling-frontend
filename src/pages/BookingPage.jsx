@@ -220,17 +220,7 @@ export default function BookingPage() {
         );
     }
 
-    if(booking !== undefined && booking.length > 0)
-    {
-        return (
-            <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
-                <div style={{width: 1300, height: 115, left: '12%', top: 315, position: 'absolute', color: 'black', fontSize: 96, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>You have already booked this ride</div>
-                <RideBookingCard userId={1} tripLocation={ride.areaName} fromToGiu={ride.fromGiu} girlsOnly={ride.girlsOnly} driversName={driversName} departureTime={ride.time} seatsLeft={ride.seatsLeft} carType={carType} basePrice={ride.basePrice} percentLeft={'12%'} percentTop={570} />
-            </div>
-        );
-    }
-
-    if(request !== undefined && request.length > 0)
+    if(request !== undefined || booking !== undefined) 
     {
         return (
             <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>

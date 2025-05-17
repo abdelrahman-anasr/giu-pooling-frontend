@@ -266,10 +266,12 @@ const DashboardPage = () => {
 
   const acceptRideFunction = async (id) => {
     acceptRequest({ variables: { id: id }});
+    bookingClient.refetchQueries({query: FETCH_REQUESTS_FOR_MY_RIDES_QUERY});
   }
 
   const rejectRideFunction = async (id) => {
     rejectRequest({ variables: { id: id }});
+    bookingClient.refetchQueries({query: FETCH_REQUESTS_FOR_MY_RIDES_QUERY});
   }
 
 

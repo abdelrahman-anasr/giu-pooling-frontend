@@ -323,7 +323,7 @@ export default function BookingPage() {
                 <button onClick={() => {setCashOptionSelected(false)}}  style={{width: 30, height: 30, left: 390, top: 540, position: 'absolute', background: 'white', borderRadius: 9999, border: '1px #6C6C6C solid'}} />
                 <div style={{width: 363.07, height: 41.83, left: 433, top: 534, position: 'absolute', textAlign: 'center', justifyContent: 'center', display: 'flex', flexDirection: 'column', color: '#6C6C6C', fontSize: 36, fontFamily: 'IBM Plex Sans', fontWeight: '600', wordWrap: 'break-word'}}>Credit/Debit Cards</div>
                 <ApproveButton label={'Pay ' + totalPrice + ' EGP'} functionToCall={() => {createRequestFunction()}} topPosition={600} leftPosition={970} size={'pay'}/>
-                <div style={{width: 890 , height: 40 , left: 40 , top: 480 , position: 'absolute' , color: 'black', fontSize: 25, fontFamily: 'IBM Plex Sans', wordWrap: 'break-word' , border: '0px black solid'}}>
+                <div style={{width: 890 , height: 40 , left: 970 , top: 780 , position: 'absolute' , color: 'green', fontSize: 30, fontWeight: 'bold', fontFamily: 'IBM Plex Sans', wordWrap: 'break-word' , border: '0px black solid'}}>
                 {successMessage}
                 </div>
             </div>
@@ -344,7 +344,7 @@ export default function BookingPage() {
                 <div style={{width: 363.07, height: 41.83, left: 433, top: 534, position: 'absolute', textAlign: 'center', justifyContent: 'center', display: 'flex', flexDirection: 'column', color: '#6C6C6C', fontSize: 36, fontFamily: 'IBM Plex Sans', fontWeight: '600', wordWrap: 'break-word'}}>Credit/Debit Cards</div>
 
                 <ApproveButton label={'Pay ' + totalPrice + ' EGP'} functionToCall={() => {createRequestFunction()}} topPosition={600} leftPosition={970} size={'pay'}/>
-                <div style={{width: 890 , height: 40 , left: 40 , top: 480 , position: 'absolute' , color: 'black', fontSize: 25, fontFamily: 'IBM Plex Sans', wordWrap: 'break-word' , border: '0px black solid'}}>
+                <div style={{width: 890 , height: 40 , left: 970 , top: 780 , position: 'absolute' , color: 'green', fontSize: 30, fontWeight: 'bold', fontFamily: 'IBM Plex Sans', wordWrap: 'break-word' , border: '0px black solid'}}>
                 {successMessage}
                 </div>
             </div>

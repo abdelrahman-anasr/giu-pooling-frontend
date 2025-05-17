@@ -110,7 +110,7 @@ export default function VerifyAccount() {
             );
         }
 
-        if(verifyAccountError.message === 'Already Verified')    
+        if(verifyAccountError.message === 'User already verified')     
         {
             return (
                 <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>

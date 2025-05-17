@@ -52,7 +52,7 @@ export default function VerifyAccount() {
 
   const {data : fetchMyDetailsData, loading : fetchMyDetailsLoading, error : fetchMyDetailsError} = useQuery(FETCH_DETAILS_QUERY , {client: client});
 
-  const [verifyAccount, { verifyAccountData, verifyAccountLoading, verifyAccountError }] = useLazyQuery(VERIFY_ACCOUNT_QUERY , {client: client});
+  const [verifyAccount, { verifyAccountData, verifyAccountLoading, verifyAccountError }] = useQuery(VERIFY_ACCOUNT_QUERY , {variables: {Code: codeNumber} , client: client});
 
   if(fetchMyDetailsLoading)
   {
@@ -80,8 +80,6 @@ export default function VerifyAccount() {
     );
   }
 
-
-    verifyAccount({ variables: { Code: codeNumber }});
 
     if(verifyAccountLoading)
     {

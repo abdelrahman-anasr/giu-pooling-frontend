@@ -152,13 +152,13 @@ export default function Results() {
 
     const {loading : fetchMyDetailsLoading, error : fetchMyDetailsError, data : fetchMyDetailsData} = useQuery(FETCH_DETAILS_QUERY , {client: client});
 
-    const {data : fetchMyBookingsData, loading : fetchMyBookingsLoading, error : fetchMyBookingsError} = useQuery(FETCH_BOOKINGS_QUERY , {client: bookingClient});
+    const {data : fetchMyBookingsData, loading : fetchMyBookingsLoading, error : fetchMyBookingsError} = useQuery(FETCH_BOOKINGS_QUERY , {client: bookingClient , fetchPolicy: 'no-cache'});
 
-    const {data : fetchMyRequestsData, loading : fetchMyRequestsLoading, error : fetchMyRequestsError} = useQuery(FETCH_REQUESTS_QUERY , {client: bookingClient});
+    const {data : fetchMyRequestsData, loading : fetchMyRequestsLoading, error : fetchMyRequestsError} = useQuery(FETCH_REQUESTS_QUERY , {client: bookingClient, fetchPolicy: 'no-cache'});
 
     const { loading: areaLoading, error: areaError, data: areaData } = useQuery(ALL_AREAS_QUERY , {client: rideClient});
 
-    const { loading: resultsLoading, error: resultsError, data: resultsData } = useQuery(RESULTS_QUERY , {client: rideClient, variables: {areaName: locationValue, fromGiu: fromToBoolean, girlsOnly: girlsOnly}});
+    const { loading: resultsLoading, error: resultsError, data: resultsData } = useQuery(RESULTS_QUERY , {client: rideClient, fetchPolicy: 'no-cache', variables: {areaName: locationValue, fromGiu: fromToBoolean, girlsOnly: girlsOnly}});
 
     const {data : fetchAllCarsData, loading : fetchAllCarsLoading, error : fetchAllCarsError} = useQuery(FETCH_ALL_CARS_QUERY , {client: client});
 

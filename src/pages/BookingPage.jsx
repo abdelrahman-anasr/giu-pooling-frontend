@@ -219,7 +219,7 @@ export default function BookingPage() {
         );
     }
 
-    if(booking !== undefined)
+    if(booking.length > 0)
     {
         return (
             <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
@@ -229,7 +229,7 @@ export default function BookingPage() {
         );
     }
 
-    if(request !== undefined)
+    if(request.length > 0)
     {
         return (
             <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>

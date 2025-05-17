@@ -35,7 +35,7 @@ export default function VerifyAccount() {
   }`;
 
   const VERIFY_ACCOUNT_QUERY = gql`
-  mutation VerifyAccount($Code: Int!) {
+  query VerifyAccount($Code: Int!) {
     verifyAccount(code: $Code) {
         id
         name

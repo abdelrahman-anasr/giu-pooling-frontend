@@ -266,6 +266,7 @@ export default function BookingPage() {
             }
         });
         navigate('/dashboard');
+        window.location.reload();
     }
 
     if(!paymentScreenOpened)

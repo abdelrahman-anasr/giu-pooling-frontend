@@ -33,7 +33,16 @@ export default function VerifyAccount() {
   const VERIFY_ACCOUNT_MUTATION = gql`
   mutation VerifyAccount($Code: String!) {
     verifyAccount(code: $Code) {
-        string
+        id
+        name
+        email
+        universityId
+        gender
+        phoneNumber
+        isEmailVerified
+        role
+        createdAt
+        updatedAt
     }
   }`;
 
@@ -89,6 +98,14 @@ export default function VerifyAccount() {
         </div>
       );
     }
+    else if(verifyAccountError.message === 'User already verified')
+    {
+      return (
+        <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
+          <div style={{width: 510, height: 115, left: '12%', top: 315, position: 'absolute', color: 'black', fontSize: 96, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>User is already verified</div>
+        </div>
+      );
+    }
     return (
       <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
         <div style={{width: 510, height: 115, left: '12%', top: 315, position: 'absolute', color: 'black', fontSize: 96, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>ERROR</div>
@@ -96,18 +113,9 @@ export default function VerifyAccount() {
     );
   }
 
-  if(verifyAccountData === "Updated")
-  {
+
     <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
         <div style={{width: 510, height: 115, left: '12%', top: 315, position: 'absolute', color: 'black', fontSize: 96, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>Email has been Verified</div>
     </div>
-  }
-  else if(verifyAccountData === "Already Verified")
-  {
-    return (
-      <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
-        <div style={{width: 510, height: 115, left: '12%', top: 315, position: 'absolute', color: 'black', fontSize: 96, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>Email is already Verified</div>
-      </div>
-    );
-  }
+
 }

@@ -168,6 +168,13 @@ export default function BookingPage() {
 
     if(fetchMyDetailsError ||fetchRideError || fetchAllCarsError || miniUsersError || allSubzonesError || fetchMyBookingsError || fetchMyRequestsError)
     {
+        console.log("Fetch my details error is:" , fetchMyDetailsError);
+        console.log("Fetch ride error is:" , fetchRideError);
+        console.log("Fetch all cars error is:" , fetchAllCarsError);
+        console.log("Mini users error is:" , miniUsersError);
+        console.log("All subzones error is:" , allSubzonesError);
+        console.log("Fetch my bookings error is:" , fetchMyBookingsError);
+        console.log("Fetch my requests error is:" , fetchMyRequestsError);
         if((fetchMyDetailsError !== undefined && fetchMyDetailsError.message === 'Unauthorized') || (fetchRideError !== undefined && fetchRideError.message === 'Unauthorized') || (fetchAllCarsError !== undefined && fetchAllCarsError.message === 'Unauthorized') || (miniUsersError !== undefined && miniUsersError.message === 'Unauthorized') || (allSubzonesError !== undefined && allSubzonesError.message === 'Unauthorized') || (fetchMyBookingsError !== undefined && fetchMyBookingsError.message === 'Unauthorized') || (fetchMyRequestsError !== undefined && fetchMyRequestsError.message === 'Unauthorized'))
         {
             return (

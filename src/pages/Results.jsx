@@ -227,7 +227,7 @@ export default function Results() {
         return (
         <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
             <div style={{width: 900, height: 98, left: '15%', top: 288, position: 'absolute', color: 'black', fontSize: 84, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>Book a Ride</div>
-            <div style={{width: 441, height: 83, left: '15%', top: 390, position: 'absolute', color: 'red', fontSize: 30, fontFamily: 'IBM Plex Sans', fontWeight: '600', wordWrap: 'break-word'}}>{errorMessage}</div>
+            <div style={{width: 800, height: 83, left: '15%', top: 390, position: 'absolute', color: 'red', fontSize: 30, fontFamily: 'IBM Plex Sans', fontWeight: '600', wordWrap: 'break-word'}}>{errorMessage}</div>
             <div style={{width: 441, height: 83, left: '15%', top: 425, position: 'absolute', color: 'black', fontSize: 62, fontFamily: 'IBM Plex Sans', fontWeight: '600', wordWrap: 'break-word'}}>Search Results</div>
             <div style={{width: 202, height: 52, left: 690, top: 444, position: 'absolute', color: 'black', fontSize: 40, fontFamily: 'IBM Plex Sans', fontWeight: '600', wordWrap: 'break-word'}}>({rides.length} Results)</div>
 

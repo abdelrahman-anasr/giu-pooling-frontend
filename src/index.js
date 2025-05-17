@@ -18,6 +18,9 @@ import Notification from './pages/Notification';
 import CreateRideForm from './pages/CreateRideForm';
 import DriverRegistrationForm from './pages/DriverRegistrationForm';
 import VerifyAccount from './pages/verifyAccount';
+import EditUserPage from './pages/EditUserPage';
+
+
 export default function App() {
   console.log("version is:" , React.version);
   return (
@@ -39,6 +42,7 @@ export default function App() {
         <Route path='/driverregistration' element={<DriverRegistrationForm />} />
         <Route path='/createride' element={<CreateRideForm />} />
         <Route path='/verify-account' element={<VerifyAccount />} />
+        <Route path='/edituser' element={<EditUserPage />} />
         
       </Routes>
     </div>

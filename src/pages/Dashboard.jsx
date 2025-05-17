@@ -409,6 +409,10 @@ const DashboardPage = () => {
     navigate("/createride");
   }
 
+  const navigateToEditUser = async () => {
+    navigate("/edituser");
+  }
+
 
   if(role === 'driver')
   {
@@ -420,6 +424,7 @@ const DashboardPage = () => {
         <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
         <div style={{width: 510, height: 115, left: '12%', top: 315, position: 'absolute', color: 'black', fontSize: 96, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>Dashboard</div>
         <div style={{width: 1060, height: 81, left: '12%', top: 445, position: 'absolute', color: 'black', fontSize: 62, fontFamily: 'IBM Plex Sans', fontWeight: '600', wordWrap: 'break-word'}}>Welcome , {firstname}!</div>
+        <ApproveButton label="Edit User" size="offer" functionToCall={navigateToEditUser} topPosition={445} leftPosition={1200} />
         <div style={{width: '70%', height: 0, left: '12%', top: 560.90, position: 'absolute', outline: '5px black solid', outlineOffset: '-2.50px'}}></div>
         <div style={{width: 1060, height: 81, left: '12%', top: 596, position: 'absolute', color: 'black', fontSize: 62, fontFamily: 'IBM Plex Sans', fontWeight: '600', wordWrap: 'break-word'}}>Passenger Dashboard</div>
     
@@ -429,9 +434,7 @@ const DashboardPage = () => {
         <div style={{width: 1060, height: 81, left: '12%', top: 1737, position: 'absolute', color: 'black', fontSize: 62, fontFamily: 'IBM Plex Sans', fontWeight: '600', wordWrap: 'break-word'}}>Driver Dashboard</div>
         <div style={{width: '70%', height: 0, left: '12%', top: 1718, position: 'absolute', outline: '5px black solid', outlineOffset: '-2.50px'}}></div>
     
-        <div style={{width: 339, height: 61, left: 910, top: 1754, position: 'absolute', background: '#FFD281', borderRadius: 70}} />
-        <div style={{width: 205.39, height: 33, left: 976, top: 1768, position: 'absolute', textAlign: 'center', color: '#111010', fontSize: 23, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>Edit Driver Profile</div>
-    
+
         <ChoiceBarCurrentBooking isChoice={isCurrentOffers} setChoice={handleCurrentOffers} firstOption={'Current Offers'} secondOption={'Ride History'} pixelsFromTop={1850} />
     
         <ScrollableOffersList offers={offers} />
@@ -446,6 +449,7 @@ const DashboardPage = () => {
         <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
         <div style={{width: 510, height: 115, left: '12%', top: 315, position: 'absolute', color: 'black', fontSize: 96, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>Dashboard</div>
         <div style={{width: 1060, height: 81, left: '12%', top: 445, position: 'absolute', color: 'black', fontSize: 62, fontFamily: 'IBM Plex Sans', fontWeight: '600', wordWrap: 'break-word'}}>Welcome , {firstname}!</div>
+        <ApproveButton label="Edit User" size="offer" functionToCall={navigateToEditUser} topPosition={445} leftPosition={1200} />
         <div style={{width: '70%', height: 0, left: '12%', top: 560.90, position: 'absolute', outline: '5px black solid', outlineOffset: '-2.50px'}}></div>
         <div style={{width: 1060, height: 81, left: '12%', top: 596, position: 'absolute', color: 'black', fontSize: 62, fontFamily: 'IBM Plex Sans', fontWeight: '600', wordWrap: 'break-word'}}>Passenger Dashboard</div>
     
@@ -455,8 +459,6 @@ const DashboardPage = () => {
         <div style={{width: 1060, height: 81, left: '12%', top: 1737, position: 'absolute', color: 'black', fontSize: 62, fontFamily: 'IBM Plex Sans', fontWeight: '600', wordWrap: 'break-word'}}>Driver Dashboard</div>
         <div style={{width: '70%', height: 0, left: '12%', top: 1718, position: 'absolute', outline: '5px black solid', outlineOffset: '-2.50px'}}></div>
     
-        <div style={{width: 339, height: 61, left: 910, top: 1754, position: 'absolute', background: '#FFD281', borderRadius: 70}} />
-        <div style={{width: 205.39, height: 33, left: 976, top: 1768, position: 'absolute', textAlign: 'center', color: '#111010', fontSize: 23, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>Edit Driver Profile</div>
     
         <ChoiceBarCurrentBooking isChoice={isCurrentOffers} setChoice={handleCurrentOffers} firstOption={'Current Offers'} secondOption={'Ride History'} pixelsFromTop={1850} />
     
@@ -473,6 +475,7 @@ const DashboardPage = () => {
       <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
       <div style={{width: 510, height: 115, left: '12%', top: 315, position: 'absolute', color: 'black', fontSize: 96, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>Dashboard</div>
       <div style={{width: 1060, height: 81, left: '12%', top: 445, position: 'absolute', color: 'black', fontSize: 62, fontFamily: 'IBM Plex Sans', fontWeight: '600', wordWrap: 'break-word'}}>Welcome , {firstname}!</div>
+      <ApproveButton label="Edit User" size="offer" functionToCall={navigateToEditUser} topPosition={445} leftPosition={1200} />
       <div style={{width: '70%', height: 0, left: '12%', top: 560.90, position: 'absolute', outline: '5px black solid', outlineOffset: '-2.50px'}}></div>
       <div style={{width: 1060, height: 81, left: '12%', top: 596, position: 'absolute', color: 'black', fontSize: 62, fontFamily: 'IBM Plex Sans', fontWeight: '600', wordWrap: 'break-word'}}>Passenger Dashboard</div>
   
@@ -483,9 +486,6 @@ const DashboardPage = () => {
   
       <div style={{width: 1060, height: 81, left: '12%', top: 1737, position: 'absolute', color: 'black', fontSize: 62, fontFamily: 'IBM Plex Sans', fontWeight: '600', wordWrap: 'break-word'}}>Driver Dashboard</div>
       <div style={{width: '70%', height: 0, left: '12%', top: 1718, position: 'absolute', outline: '5px black solid', outlineOffset: '-2.50px'}}></div>
-  
-      <div style={{width: 339, height: 61, left: 910, top: 1754, position: 'absolute', background: '#FFD281', borderRadius: 70}} />
-      <div style={{width: 205.39, height: 33, left: 976, top: 1768, position: 'absolute', textAlign: 'center', color: '#111010', fontSize: 23, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>Edit Driver Profile</div>
   
       <ChoiceBarCurrentBooking isChoice={isCurrentOffers} setChoice={handleCurrentOffers} firstOption={'Current Offers'} secondOption={'Ride History'} pixelsFromTop={1850} />
   
@@ -504,6 +504,7 @@ const DashboardPage = () => {
         <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
         <div style={{width: 510, height: 115, left: '12%', top: 315, position: 'absolute', color: 'black', fontSize: 96, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>Dashboard</div>
         <div style={{width: 1060, height: 81, left: '12%', top: 445, position: 'absolute', color: 'black', fontSize: 62, fontFamily: 'IBM Plex Sans', fontWeight: '600', wordWrap: 'break-word'}}>Welcome , {firstname}!</div>
+        <ApproveButton label="Edit User" size="offer" functionToCall={navigateToEditUser} topPosition={445} leftPosition={1200} />
         <div style={{width: '70%', height: 0, left: '12%', top: 560.90, position: 'absolute', outline: '5px black solid', outlineOffset: '-2.50px'}}></div>
         <div style={{width: 1060, height: 81, left: '12%', top: 596, position: 'absolute', color: 'black', fontSize: 62, fontFamily: 'IBM Plex Sans', fontWeight: '600', wordWrap: 'break-word'}}>Passenger Dashboard</div>
     
@@ -522,6 +523,7 @@ const DashboardPage = () => {
         <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
         <div style={{width: 510, height: 115, left: '12%', top: 315, position: 'absolute', color: 'black', fontSize: 96, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>Dashboard</div>
         <div style={{width: 1060, height: 81, left: '12%', top: 445, position: 'absolute', color: 'black', fontSize: 62, fontFamily: 'IBM Plex Sans', fontWeight: '600', wordWrap: 'break-word'}}>Welcome , {firstname}!</div>
+        <ApproveButton label="Edit User" size="offer" functionToCall={navigateToEditUser} topPosition={445} leftPosition={1200} />
         <div style={{width: '70%', height: 0, left: '12%', top: 560.90, position: 'absolute', outline: '5px black solid', outlineOffset: '-2.50px'}}></div>
         <div style={{width: 1060, height: 81, left: '12%', top: 596, position: 'absolute', color: 'black', fontSize: 62, fontFamily: 'IBM Plex Sans', fontWeight: '600', wordWrap: 'break-word'}}>Passenger Dashboard</div>
     

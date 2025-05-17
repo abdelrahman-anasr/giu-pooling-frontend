@@ -29,6 +29,12 @@ const rideClient = new ApolloClient({
     credentials: 'include',
 });
 
+const bookingClient = new ApolloClient({
+  uri: 'https://bookingservice-production-4772.up.railway.app/booking',
+  cache: new InMemoryCache(),
+  credentials: 'include',
+});
+
 export default function Results() {
 
     const navigate = useNavigate();
@@ -119,9 +125,22 @@ export default function Results() {
         }
     }`;
 
+    const FETCH_BOOKINGS_QUERY = gql`
+    query FetchMyBookings {
+        fetchMyBookings {
+            id
+            studentId
+            rideId
+            status
+            price
+        }
+    }`;
+
 
 
     const {loading : fetchMyDetailsLoading, error : fetchMyDetailsError, data : fetchMyDetailsData} = useQuery(FETCH_DETAILS_QUERY , {client: client});
+
+    const {data : fetchMyBookingsData, loading : fetchMyBookingsLoading, error : fetchMyBookingsError} = useQuery(FETCH_BOOKINGS_QUERY , {client: bookingClient});
 
     const { loading: areaLoading, error: areaError, data: areaData } = useQuery(ALL_AREAS_QUERY , {client: rideClient});
 
@@ -131,16 +150,16 @@ export default function Results() {
 
     const { loading: miniUsersLoading, error: miniUsersError, data: miniUsersData } = useQuery(MINI_USERS_QUERY , {client: client});
 
-    if(areaLoading || resultsLoading || miniUsersLoading || fetchMyDetailsLoading || fetchAllCarsLoading) {
+    if(areaLoading || resultsLoading || miniUsersLoading || fetchMyDetailsLoading || fetchAllCarsLoading || fetchMyBookingsLoading) {
         return (
             <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
             <div style={{width: 510, height: 115, left: '12%', top: 315, position: 'absolute', color: 'black', fontSize: 96, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>LOADING...</div>
             </div>
         );
     }
-    else if(areaError || resultsError || miniUsersError || fetchMyDetailsError || fetchAllCarsError)
+    else if(areaError || resultsError || miniUsersError || fetchMyDetailsError || fetchAllCarsError || fetchMyBookingsError)
     {
-        if(areaError.message === 'Unauthorized' || resultsError.message === 'Unauthorized' || miniUsersError.message === 'Unauthorized' || fetchMyDetailsError.message === 'Unauthorized' || fetchAllCarsError.message === 'Unauthorized')
+        if((areaError !== undefined && areaError.message === 'Unauthorized') || (resultsError !== undefined && resultsError.message === 'Unauthorized') || (miniUsersError !== undefined && miniUsersError.message === 'Unauthorized') || (fetchMyDetailsError !== undefined && fetchMyDetailsError.message === 'Unauthorized') || (fetchAllCarsError !== undefined && fetchAllCarsError.message === 'Unauthorized') || (fetchMyBookingsError !== undefined && fetchMyBookingsError.message === 'Unauthorized'))
         {
             return (
                 <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
@@ -197,10 +216,20 @@ export default function Results() {
             }).toString()
         });
     }
+
+    const userBookings = fetchMyBookingsData.fetchMyBookings;
+    let userBookingIds = [];
+    userBookings.forEach(booking => {
+        userBookingIds.push(booking.rideId);
+    });
+
     resultsData.fetchRideByCriteria.forEach(ride => {
-        const carType = fetchAllCarsData.cars.find(car => car.DriverId.toString() === ride.driverId.toString()).carModel;
-        const driverName = miniUsersData.Miniusers.find(user => user.universityId.toString() === ride.driverId.toString()).name;
-        rides.push({tripId: ride.id , tripLocation: ride.areaName , fromToGiu: ride.fromGiu , girlsOnly: ride.girlsOnly , driversName : driverName , departureTime: ride.time , seatsLeft: ride.seatsLeft, carType: carType , basePrice: ride.basePrice , functionToCall: navigateToBookingPage});
+        if(!userBookingIds.includes(ride.id))
+        {
+            const carType = fetchAllCarsData.cars.find(car => car.DriverId.toString() === ride.driverId.toString()).carModel;
+            const driverName = miniUsersData.Miniusers.find(user => user.universityId.toString() === ride.driverId.toString()).name;
+            rides.push({tripId: ride.id , tripLocation: ride.areaName , fromToGiu: ride.fromGiu , girlsOnly: ride.girlsOnly , driversName : driverName , departureTime: ride.time , seatsLeft: ride.seatsLeft, carType: carType , basePrice: ride.basePrice , functionToCall: navigateToBookingPage});
+        }
     });
 
 

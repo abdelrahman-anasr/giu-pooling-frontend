@@ -265,8 +265,10 @@ export default function BookingPage() {
                 paymentOption: paymentOption
             }
         });
-        navigate('/dashboard');
+        setTimeout(() => {
+            navigate('/dashboard');
         window.location.reload();
+        }, 3500);
     }
 
     if(!paymentScreenOpened)

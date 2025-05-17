@@ -14,6 +14,8 @@ export default function VerifyAccount() {
 
   const code = searchParams.get('code');
 
+  const codeNumber = parseInt(code);
+
   console.log("Code is:" , code);
 
   const FETCH_DETAILS_QUERY = gql`
@@ -33,7 +35,7 @@ export default function VerifyAccount() {
   }`;
 
   const VERIFY_ACCOUNT_MUTATION = gql`
-  mutation VerifyAccount($Code: String!) {
+  mutation VerifyAccount($Code: Int!) {
     verifyAccount(code: $Code) {
         id
         name
@@ -79,14 +81,50 @@ export default function VerifyAccount() {
   }
 
 
-    verifyAccount({ variables: { Code: code }}).catch((err) => {
-        console.log("Error is:" , err);
+    verifyAccount({ variables: { Code: codeNumber }});
+
+if(verifyAccountLoading)
+{
+    return (
+        <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
+            <div style={{width: 510, height: 115, left: '12%', top: 315, position: 'absolute', color: 'black', fontSize: 96, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>LOADING...</div>
+        </div>
+    );
+}
+else if(verifyAccountError)
+{
+    if(verifyAccountError.message === 'Unauthorized')
+    {
         return (
             <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
-                <div style={{width: 510, height: 115, left: '12%', top: 315, position: 'absolute', color: 'black', fontSize: 96, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>ERROR</div>
+                <div style={{width: 510, height: 115, left: '12%', top: 315, position: 'absolute', color: 'black', fontSize: 96, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>You are Unauthorized to access this page</div>
             </div>
         );
-    });
+    }
+    if(verifyAccountError.message === 'Wrong Code')
+    {
+        return (
+            <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
+                <div style={{width: 510, height: 115, left: '12%', top: 315, position: 'absolute', color: 'black', fontSize: 96, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>Code is not valid</div>
+            </div>
+        );
+    }
+
+    if(verifyAccountError.message === 'Already Verified')    
+    {
+        return (
+            <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
+                <div style={{width: 510, height: 115, left: '12%', top: 315, position: 'absolute', color: 'black', fontSize: 96, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>Email is already Verified</div>
+            </div>
+        );
+    }
+
+    return (
+        <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
+            <div style={{width: 510, height: 115, left: '12%', top: 315, position: 'absolute', color: 'black', fontSize: 96, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>ERROR</div>
+        </div>
+    );
+}
 
     return(
         

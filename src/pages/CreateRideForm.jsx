@@ -28,6 +28,24 @@ export default function CreateRideForm({ onSuccess }) {
   const [success, setSuccess] = useState(false);
   const [createdRide, setCreatedRide] = useState(null);
 
+  const FETCH_DETAILS_QUERY = gql`
+  query FetchMyDetails{
+    fetchMyDetails{
+        id
+        name
+        email
+        universityId
+        gender
+        phoneNumber
+        isEmailVerified
+        role
+        createdAt
+        updatedAt
+    }
+  }`
+
+  const {data : fetchMyDetailsData, loading : fetchMyDetailsLoading, error : fetchMyDetailsError} = useQuery(FETCH_DETAILS_QUERY , {client: client});
+
   useEffect(() => {
     // Set loading state while fetching
     setLoading(true);
@@ -150,74 +168,165 @@ export default function CreateRideForm({ onSuccess }) {
     return <SuccessRide ride={createdRide} />;
   }
 
-  return (
-    <FormContainer>
-      <div style={styles.pageContainer}>
-        <h1 style={styles.title}>Create a Ride</h1>
-        <FormBox>
-          {error && <div style={styles.errorMessage}>{error}</div>}
-          <form onSubmit={handleSubmit}>
-            <FormRow>
-              <label style={styles.label}>Direction</label>
-              <select 
-                name="fromGiu" 
-                value={form.fromGiu} 
-                onChange={handleChange}
-                style={styles.select}
-              >
-                <option value="from">From GIU</option>
-                <option value="to">To GIU</option>
-              </select>
-            </FormRow>
-            <FormRow>
-              <label style={styles.label}>Location</label>
-              <select 
-                name="areaName" 
-                value={form.areaName} 
-                onChange={handleChange} 
-                required
-                style={styles.select}
-                disabled={loading || areas.length === 0}
-              >
-                <option value="">Choose Location</option>
-                {areas.map((a) => (
-                  <option key={a.areaName} value={a.areaName}>
-                    {a.areaName}
-                  </option>
-                ))}
-              </select>
-            </FormRow>
-            <FormRow>
-              <label style={styles.label}>Departure Time</label>
-              <input
-                type="datetime-local"
-                name="time"
-                value={form.time}
-                onChange={handleChange}
-                style={styles.input}
-                required
-              />
-            </FormRow>
-            <FormRow>
-              <label style={styles.checkboxLabel}>
-                <input
-                  type="checkbox"
-                  name="girlsOnly"
-                  checked={form.girlsOnly}
-                  onChange={handleChange}
-                  style={styles.checkbox}
-                />
-                Girls-Only Ride
-              </label>
-            </FormRow>
-            <div style={styles.buttonContainer}>
-              <SubmitButton label="Create Ride" isSubmitting={loading} />
-            </div>
-          </form>
-        </FormBox>
+  if(fetchMyDetailsLoading)
+  {
+    return (
+      <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
+        <div style={{width: 510, height: 115, left: '12%', top: 315, position: 'absolute', color: 'black', fontSize: 96, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>LOADING...</div>
       </div>
-    </FormContainer>
-  );
+    );
+  }
+
+  if(fetchMyDetailsError)
+  {
+    if(fetchMyDetailsError.message === 'Unauthorized')
+    {
+      return (
+        <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
+          <div style={{width: 510, height: 115, left: '12%', top: 315, position: 'absolute', color: 'black', fontSize: 96, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>You are Unauthorized to access this page</div>
+        </div>
+      );
+    }
+    return (
+      <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
+        <div style={{width: 510, height: 115, left: '12%', top: 315, position: 'absolute', color: 'black', fontSize: 96, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>ERROR</div>
+      </div>
+    );
+  }
+
+  const user = fetchMyDetailsData.fetchMyDetails;
+  const gender = user.gender;
+
+  if(gender !== 'male' && gender !== 'Male')
+  {
+    return (
+      <FormContainer>
+        <div style={styles.pageContainer}>
+          <h1 style={styles.title}>Create a Ride</h1>
+          <FormBox>
+            {error && <div style={styles.errorMessage}>{error}</div>}
+            <form onSubmit={handleSubmit}>
+              <FormRow>
+                <label style={styles.label}>Direction</label>
+                <select 
+                  name="fromGiu" 
+                  value={form.fromGiu} 
+                  onChange={handleChange}
+                  style={styles.select}
+                >
+                  <option value="from">From GIU</option>
+                  <option value="to">To GIU</option>
+                </select>
+              </FormRow>
+              <FormRow>
+                <label style={styles.label}>Location</label>
+                <select 
+                  name="areaName" 
+                  value={form.areaName} 
+                  onChange={handleChange} 
+                  required
+                  style={styles.select}
+                  disabled={loading || areas.length === 0}
+                >
+                  <option value="">Choose Location</option>
+                  {areas.map((a) => (
+                    <option key={a.areaName} value={a.areaName}>
+                      {a.areaName}
+                    </option>
+                  ))}
+                </select>
+              </FormRow>
+              <FormRow>
+                <label style={styles.label}>Departure Time</label>
+                <input
+                  type="datetime-local"
+                  name="time"
+                  value={form.time}
+                  onChange={handleChange}
+                  style={styles.input}
+                  required
+                />
+              </FormRow>
+              <FormRow>
+                <label style={styles.checkboxLabel}>
+                  <input
+                    type="checkbox"
+                    name="girlsOnly"
+                    checked={form.girlsOnly}
+                    onChange={handleChange}
+                    style={styles.checkbox}
+                  />
+                  Girls-Only Ride
+                </label>
+              </FormRow>
+              <div style={styles.buttonContainer}>
+                <SubmitButton label="Create Ride" isSubmitting={loading} />
+              </div>
+            </form>
+          </FormBox>
+        </div>
+      </FormContainer>
+    );
+  }
+  else
+  {
+    return (
+      <FormContainer>
+        <div style={styles.pageContainer}>
+          <h1 style={styles.title}>Create a Ride</h1>
+          <FormBox>
+            {error && <div style={styles.errorMessage}>{error}</div>}
+            <form onSubmit={handleSubmit}>
+              <FormRow>
+                <label style={styles.label}>Direction</label>
+                <select 
+                  name="fromGiu" 
+                  value={form.fromGiu} 
+                  onChange={handleChange}
+                  style={styles.select}
+                >
+                  <option value="from">From GIU</option>
+                  <option value="to">To GIU</option>
+                </select>
+              </FormRow>
+              <FormRow>
+                <label style={styles.label}>Location</label>
+                <select 
+                  name="areaName" 
+                  value={form.areaName} 
+                  onChange={handleChange} 
+                  required
+                  style={styles.select}
+                  disabled={loading || areas.length === 0}
+                >
+                  <option value="">Choose Location</option>
+                  {areas.map((a) => (
+                    <option key={a.areaName} value={a.areaName}>
+                      {a.areaName}
+                    </option>
+                  ))}
+                </select>
+              </FormRow>
+              <FormRow>
+                <label style={styles.label}>Departure Time</label>
+                <input
+                  type="datetime-local"
+                  name="time"
+                  value={form.time}
+                  onChange={handleChange}
+                  style={styles.input}
+                  required
+                />
+              </FormRow>
+              <div style={styles.buttonContainer}>
+                <SubmitButton label="Create Ride" isSubmitting={loading} />
+              </div>
+            </form>
+          </FormBox>
+        </div>
+      </FormContainer>
+    );
+  }
 }
 
 const styles = {

@@ -247,6 +247,8 @@ export default function Results() {
         {
             const carType = fetchAllCarsData.cars.find(car => car.DriverId.toString() === ride.driverId.toString()).carModel;
             const driverName = miniUsersData.Miniusers.find(user => user.universityId.toString() === ride.driverId.toString()).name;
+            let departureTime = ride.time;
+            console.log("Departure time is:" , departureTime);
             rides.push({tripId: ride.id , tripLocation: ride.areaName , fromToGiu: ride.fromGiu , girlsOnly: ride.girlsOnly , driversName : driverName , departureTime: ride.time , seatsLeft: ride.seatsLeft, carType: carType , basePrice: ride.basePrice , functionToCall: navigateToBookingPage});
         }
     });

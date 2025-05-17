@@ -32,7 +32,8 @@ const rideClient = new ApolloClient({
 export default function Results() {
 
     const navigate = useNavigate();
-
+    const [error , setError] = useState(false);
+    const [errorMessage , setErrorMessage] = useState("");
     const [searchParams , setSearchParams] = useSearchParams();
     const locationParams = searchParams.get('location');
     const fromToParams = searchParams.get('fromGiu');
@@ -160,6 +161,7 @@ export default function Results() {
 
     const details = fetchMyDetailsData;
     const userId = JSON.stringify(details.fetchMyDetails.universityId);
+    const gender = details.fetchMyDetails.gender;
 
     console.log("Results data is:" , resultsData);
     console.log("Results error is:" , resultsError);
@@ -181,6 +183,12 @@ export default function Results() {
     ];
 
     const navigateToBookingPage = (id) => {
+        const rideFetched = rides.find(ride => ride.tripId === id);
+        if(rideFetched.girlsOnly && (gender === 'male' || gender === 'Male'))
+        {
+            setError(true);
+            setErrorMessage("You can't book a girls-only ride as a male");
+        }
         navigate({
             pathname: '/booking',
             search: createSearchParams({
@@ -200,14 +208,31 @@ export default function Results() {
         console.log("Function called");
     }
 
-    return (
-    <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
-        <div style={{width: 900, height: 98, left: '15%', top: 288, position: 'absolute', color: 'black', fontSize: 84, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>Book a Ride</div>
-        <div style={{width: 441, height: 83, left: '15%', top: 425, position: 'absolute', color: 'black', fontSize: 62, fontFamily: 'IBM Plex Sans', fontWeight: '600', wordWrap: 'break-word'}}>Search Results</div>
-        <div style={{width: 202, height: 52, left: 690, top: 444, position: 'absolute', color: 'black', fontSize: 40, fontFamily: 'IBM Plex Sans', fontWeight: '600', wordWrap: 'break-word'}}>({rides.length} Results)</div>
+    if(!error)
+    {
+        return (
+        <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
+            <div style={{width: 900, height: 98, left: '15%', top: 288, position: 'absolute', color: 'black', fontSize: 84, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>Book a Ride</div>
+            <div style={{width: 441, height: 83, left: '15%', top: 425, position: 'absolute', color: 'black', fontSize: 62, fontFamily: 'IBM Plex Sans', fontWeight: '600', wordWrap: 'break-word'}}>Search Results</div>
+            <div style={{width: 202, height: 52, left: 690, top: 444, position: 'absolute', color: 'black', fontSize: 40, fontFamily: 'IBM Plex Sans', fontWeight: '600', wordWrap: 'break-word'}}>({rides.length} Results)</div>
 
-        <FilterBox filterOpened={filterOpened} setFilterOpened={setFilterOpened} percentLeft={1200} percentTop={462} functionToCall={func} itemsFromTo={itemsFromTo} setItemsFromTo={setItemsFromTo} fromToValue={fromToValue} setFromToValue={setFromToValue} fromToOpened={fromToOpened} setFromToOpened={setFromToOpened} itemsLocation={itemsLocation} locationValue={locationValue} setLocationValue={setLocationValue} locationOpened={locationOpened} setLocationOpened={setLocationOpened} girlsOnly={girlsOnly} setGirlsOnly={setGirlsOnly} />
-        <RideResultList rides={rides} percentTop={547} percentLeft={'15%'} />
-    </div>
-    );
+            <FilterBox filterOpened={filterOpened} setFilterOpened={setFilterOpened} percentLeft={1200} percentTop={462} functionToCall={func} itemsFromTo={itemsFromTo} setItemsFromTo={setItemsFromTo} fromToValue={fromToValue} setFromToValue={setFromToValue} fromToOpened={fromToOpened} setFromToOpened={setFromToOpened} itemsLocation={itemsLocation} locationValue={locationValue} setLocationValue={setLocationValue} locationOpened={locationOpened} setLocationOpened={setLocationOpened} girlsOnly={girlsOnly} setGirlsOnly={setGirlsOnly} />
+            <RideResultList rides={rides} percentTop={547} percentLeft={'15%'} />
+        </div>
+        );
+    }
+    else
+    {
+        return (
+        <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
+            <div style={{width: 900, height: 98, left: '15%', top: 288, position: 'absolute', color: 'black', fontSize: 84, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>Book a Ride</div>
+            <div style={{width: 441, height: 83, left: '15%', top: 390, position: 'absolute', color: 'red', fontSize: 30, fontFamily: 'IBM Plex Sans', fontWeight: '600', wordWrap: 'break-word'}}>{errorMessage}</div>
+            <div style={{width: 441, height: 83, left: '15%', top: 425, position: 'absolute', color: 'black', fontSize: 62, fontFamily: 'IBM Plex Sans', fontWeight: '600', wordWrap: 'break-word'}}>Search Results</div>
+            <div style={{width: 202, height: 52, left: 690, top: 444, position: 'absolute', color: 'black', fontSize: 40, fontFamily: 'IBM Plex Sans', fontWeight: '600', wordWrap: 'break-word'}}>({rides.length} Results)</div>
+
+            <FilterBox filterOpened={filterOpened} setFilterOpened={setFilterOpened} percentLeft={1200} percentTop={462} functionToCall={func} itemsFromTo={itemsFromTo} setItemsFromTo={setItemsFromTo} fromToValue={fromToValue} setFromToValue={setFromToValue} fromToOpened={fromToOpened} setFromToOpened={setFromToOpened} itemsLocation={itemsLocation} locationValue={locationValue} setLocationValue={setLocationValue} locationOpened={locationOpened} setLocationOpened={setLocationOpened} girlsOnly={girlsOnly} setGirlsOnly={setGirlsOnly} />
+            <RideResultList rides={rides} percentTop={547} percentLeft={'15%'} />
+        </div>
+        );
+    }
  }

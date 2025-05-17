@@ -84,39 +84,7 @@ export default function DriverRegistrationForm() {
     fetchUser();
   }, []);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setStatus("submitting");
-    setError("");
-
-    if (!carBrand.trim() || !carModel.trim() || !carModelYear.trim()) {
-      setStatus("error");
-      setError("Please fill in all required fields.");
-      return;
-    }
-
-    const query = `
-  mutation CreateRequest(
-    $universityId: String!
-    $file: Upload
-    $carModel: String!
-    $carModelYear: String!
-    $seats: Int!
-  ) {
-    createRequest(
-      universityId: $universityId
-      file: $file
-      carModel: $carModel
-      carModelYear: $carModelYear
-      seats: $seats
-    ) {
-      id
-      status
-    }
-  }
-`;
-
-  if(fetchMyDetailsLoading)
+    if(fetchMyDetailsLoading)
   {
     return (
       <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
@@ -153,6 +121,41 @@ export default function DriverRegistrationForm() {
         </div>
     );
   }
+
+  const handleSubmit = async (e) => {
+    console.log("Submitting");
+    e.preventDefault();
+    setStatus("submitting");
+    setError("");
+
+    if (!carBrand.trim() || !carModel.trim() || !carModelYear.trim()) {
+      setStatus("error");
+      setError("Please fill in all required fields.");
+      return;
+    }
+
+    console.log("Query loading: ");
+    const query = `
+  mutation CreateRequest(
+    $universityId: String!
+    $file: Upload
+    $carModel: String!
+    $carModelYear: String!
+    $seats: Int!
+  ) {
+    createRequest(
+      universityId: $universityId
+      file: $file
+      carModel: $carModel
+      carModelYear: $carModelYear
+      seats: $seats
+    ) {
+      id
+      status
+    }
+  }
+`;
+
 const variables = {
   universityId,
   file: null,
@@ -161,7 +164,7 @@ const variables = {
   seats: parseInt(seats, 10),
 };
 
-
+console.log("Entering form data:");
     const formData = new FormData();
     formData.append("operations", JSON.stringify({ query, variables }));
     formData.append("map", JSON.stringify({ "0": ["variables.file"] }));

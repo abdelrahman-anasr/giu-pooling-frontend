@@ -581,6 +581,7 @@ const AccountRequests = () => {
                        'pending';
 
     return (
+      // eslint-disable-next-line
       <div
         ref={isSelected ? selectedCardRef : null}
         data-index={index}

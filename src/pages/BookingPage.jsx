@@ -168,7 +168,7 @@ export default function BookingPage() {
 
     if(fetchMyDetailsError ||fetchRideError || fetchAllCarsError || miniUsersError || allSubzonesError || fetchMyBookingsError || fetchMyRequestsError)
     {
-        if(fetchMyDetailsError.message === 'Unauthorized' || fetchRideError.message === 'Unauthorized' || fetchAllCarsError.message === 'Unauthorized' || miniUsersError.message === 'Unauthorized' || allSubzonesError.message === 'Unauthorized' || fetchMyBookingsError.message === 'Unauthorized' || fetchMyRequestsError.message === 'Unauthorized')
+        if((fetchMyDetailsError !== undefined && fetchMyDetailsError.message === 'Unauthorized') || (fetchRideError !== undefined && fetchRideError.message === 'Unauthorized') || (fetchAllCarsError !== undefined && fetchAllCarsError.message === 'Unauthorized') || (miniUsersError !== undefined && miniUsersError.message === 'Unauthorized') || (allSubzonesError !== undefined && allSubzonesError.message === 'Unauthorized') || (fetchMyBookingsError !== undefined && fetchMyBookingsError.message === 'Unauthorized') || (fetchMyRequestsError !== undefined && fetchMyRequestsError.message === 'Unauthorized'))
         {
             return (
                 <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>

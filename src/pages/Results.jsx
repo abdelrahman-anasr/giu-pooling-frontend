@@ -188,6 +188,7 @@ export default function Results() {
         {
             setError(true);
             setErrorMessage("You can't book a girls-only ride as a male");
+            return;
         }
         navigate({
             pathname: '/booking',

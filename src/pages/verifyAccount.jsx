@@ -14,6 +14,8 @@ export default function VerifyAccount() {
 
   const code = searchParams.get('code');
 
+  console.log("Code is:" , code);
+
   const FETCH_DETAILS_QUERY = gql`
   query FetchMyDetails{
     fetchMyDetails{
@@ -77,7 +79,14 @@ export default function VerifyAccount() {
   }
 
 
-    verifyAccount({ variables: { Code: code }});
+    verifyAccount({ variables: { Code: code }}).catch((err) => {
+        console.log("Error is:" , err);
+        return (
+            <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
+                <div style={{width: 510, height: 115, left: '12%', top: 315, position: 'absolute', color: 'black', fontSize: 96, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>ERROR</div>
+            </div>
+        );
+    });
 
     return(
         

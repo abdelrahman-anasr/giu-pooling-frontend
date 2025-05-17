@@ -78,52 +78,12 @@ export default function VerifyAccount() {
 
 
     verifyAccount({ variables: { Code: code }});
-  if(verifyAccountLoading)
-  {
-    return (
-      <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
-        <div style={{width: 510, height: 115, left: '12%', top: 315, position: 'absolute', color: 'black', fontSize: 96, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>LOADING...</div>
-      </div>
-    );
-  }
 
-  if(verifyAccountError)
-  {
-    console.log("Verify account error is:" , verifyAccountError);
-    if(verifyAccountError.message === 'Unauthorized')
-    {
-      return (
-        <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
-          <div style={{width: 510, height: 115, left: '12%', top: 315, position: 'absolute', color: 'black', fontSize: 96, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>You are Unauthorized to access this page</div>
-        </div>
-      );
-    }
-    else if(verifyAccountError.message === 'Wrong Code')
-    {
-      return (
-        <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
-          <div style={{width: 510, height: 115, left: '12%', top: 315, position: 'absolute', color: 'black', fontSize: 96, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>This verification does not exist</div>
-        </div>
-      );
-    }
-    else if(verifyAccountError.message === 'User already verified')
-    {
-      return (
-        <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
-          <div style={{width: 510, height: 115, left: '12%', top: 315, position: 'absolute', color: 'black', fontSize: 96, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>User is already verified</div>
-        </div>
-      );
-    }
-    return (
-      <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
-        <div style={{width: 510, height: 115, left: '12%', top: 315, position: 'absolute', color: 'black', fontSize: 96, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>ERROR</div>
-      </div>
-    );
-  }
-
-
+    return(
+        
     <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
         <div style={{width: 510, height: 115, left: '12%', top: 315, position: 'absolute', color: 'black', fontSize: 96, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>Email has been Verified</div>
     </div>
+    );
 
 }

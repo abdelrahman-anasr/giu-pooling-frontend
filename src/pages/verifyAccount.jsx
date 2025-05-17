@@ -34,7 +34,7 @@ export default function VerifyAccount() {
     }
   }`;
 
-  const VERIFY_ACCOUNT_MUTATION = gql`
+  const VERIFY_ACCOUNT_QUERY = gql`
   mutation VerifyAccount($Code: Int!) {
     verifyAccount(code: $Code) {
         id
@@ -52,7 +52,7 @@ export default function VerifyAccount() {
 
   const {data : fetchMyDetailsData, loading : fetchMyDetailsLoading, error : fetchMyDetailsError} = useQuery(FETCH_DETAILS_QUERY , {client: client});
 
-  const [verifyAccount, { verifyAccountData, verifyAccountLoading, verifyAccountError }] = useMutation(VERIFY_ACCOUNT_MUTATION , {client: client});
+  const [verifyAccount, { verifyAccountData, verifyAccountLoading, verifyAccountError }] = useLazyQuery(VERIFY_ACCOUNT_QUERY , {client: client});
 
   if(fetchMyDetailsLoading)
   {
@@ -83,48 +83,48 @@ export default function VerifyAccount() {
 
     verifyAccount({ variables: { Code: codeNumber }});
 
-if(verifyAccountLoading)
-{
-    return (
-        <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
-            <div style={{width: 510, height: 115, left: '12%', top: 315, position: 'absolute', color: 'black', fontSize: 96, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>LOADING...</div>
-        </div>
-    );
-}
-else if(verifyAccountError)
-{
-    if(verifyAccountError.message === 'Unauthorized')
+    if(verifyAccountLoading)
     {
         return (
             <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
-                <div style={{width: 510, height: 115, left: '12%', top: 315, position: 'absolute', color: 'black', fontSize: 96, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>You are Unauthorized to access this page</div>
+                <div style={{width: 510, height: 115, left: '12%', top: 315, position: 'absolute', color: 'black', fontSize: 96, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>LOADING...</div>
             </div>
         );
     }
-    if(verifyAccountError.message === 'Wrong Code')
+    else if(verifyAccountError)
     {
-        return (
-            <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
-                <div style={{width: 510, height: 115, left: '12%', top: 315, position: 'absolute', color: 'black', fontSize: 96, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>Code is not valid</div>
-            </div>
-        );
-    }
+        if(verifyAccountError.message === 'Unauthorized')
+        {
+            return (
+                <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
+                    <div style={{width: 510, height: 115, left: '12%', top: 315, position: 'absolute', color: 'black', fontSize: 96, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>You are Unauthorized to access this page</div>
+                </div>
+            );
+        }
+        if(verifyAccountError.message === 'Wrong Code')
+        {
+            return (
+                <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
+                    <div style={{width: 510, height: 115, left: '12%', top: 315, position: 'absolute', color: 'black', fontSize: 96, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>Code is not valid</div>
+                </div>
+            );
+        }
 
-    if(verifyAccountError.message === 'Already Verified')    
-    {
+        if(verifyAccountError.message === 'Already Verified')    
+        {
+            return (
+                <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
+                    <div style={{width: 510, height: 115, left: '12%', top: 315, position: 'absolute', color: 'black', fontSize: 96, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>Email is already Verified</div>
+                </div>
+            );
+        }
+
         return (
             <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
-                <div style={{width: 510, height: 115, left: '12%', top: 315, position: 'absolute', color: 'black', fontSize: 96, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>Email is already Verified</div>
+                <div style={{width: 510, height: 115, left: '12%', top: 315, position: 'absolute', color: 'black', fontSize: 96, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>ERROR</div>
             </div>
         );
     }
-
-    return (
-        <div style={{width: '100%', height: '100%', position: 'relative', background: '#FFF8EF'}}>
-            <div style={{width: 510, height: 115, left: '12%', top: 315, position: 'absolute', color: 'black', fontSize: 96, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>ERROR</div>
-        </div>
-    );
-}
 
     return(
         

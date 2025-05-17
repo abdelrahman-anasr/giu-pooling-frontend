@@ -247,9 +247,15 @@ export default function Results() {
         {
             const carType = fetchAllCarsData.cars.find(car => car.DriverId.toString() === ride.driverId.toString()).carModel;
             const driverName = miniUsersData.Miniusers.find(user => user.universityId.toString() === ride.driverId.toString()).name;
-            let departureTime = ride.time;
-            console.log("Departure time is:" , departureTime);
-            rides.push({tripId: ride.id , tripLocation: ride.areaName , fromToGiu: ride.fromGiu , girlsOnly: ride.girlsOnly , driversName : driverName , departureTime: ride.time , seatsLeft: ride.seatsLeft, carType: carType , basePrice: ride.basePrice , functionToCall: navigateToBookingPage});
+            const departureDate = ride.time.split('T')[0];
+            let departureTime = ride.time.split('T')[1];
+            departureTime = departureTime.split('.')[0];
+            let [hours , minutes , seconds] = departureTime.split(':');
+            let timeSign = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            departureTime = hours + ':' + minutes + ' ' + timeSign;
+            departureTime = departureDate + " , " + departureTime;
+            rides.push({tripId: ride.id , tripLocation: ride.areaName , fromToGiu: ride.fromGiu , girlsOnly: ride.girlsOnly , driversName : driverName , departureTime: departureTime , seatsLeft: ride.seatsLeft, carType: carType , basePrice: ride.basePrice , functionToCall: navigateToBookingPage});
         }
     });
 

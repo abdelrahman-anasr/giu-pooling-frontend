@@ -13,7 +13,7 @@ export default function RideResultCard({tripId , tripLocation , fromToGiu , girl
         <div style={{width: 317, height: 31, left: 20, top: 88, position: 'absolute', color: 'black', fontSize: 24, fontFamily: 'IBM Plex Sans', fontWeight: '400', wordWrap: 'break-word'}}>{driversName}</div>
 
         <div style={{width: 250, height: 28, left: 320, top: 60, position: 'absolute', color: 'black', fontSize: 24, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>Departure Time:</div>
-        <div style={{width: 238.43, height: 31, left: 320, top: 88, position: 'absolute', color: 'black', fontSize: 24, fontFamily: 'IBM Plex Sans', fontWeight: '400', wordWrap: 'break-word'}}>11:45 AM</div>
+        <div style={{width: 238.43, height: 31, left: 320, top: 88, position: 'absolute', color: 'black', fontSize: 24, fontFamily: 'IBM Plex Sans', fontWeight: '400', wordWrap: 'break-word'}}>{departureTime}</div>
 
         <div style={{width: 160, height: 28, left: 640, top: 60, position: 'absolute', color: 'black', fontSize: 24, fontFamily: 'IBM Plex Sans', fontWeight: '700', wordWrap: 'break-word'}}>Seats Left:</div>
         <div style={{width: 238.43, height: 31, left: 640, top: 88, position: 'absolute', color: 'black', fontSize: 24, fontFamily: 'IBM Plex Sans', fontWeight: '400', wordWrap: 'break-word'}}>{seatsLeft} Seats</div>

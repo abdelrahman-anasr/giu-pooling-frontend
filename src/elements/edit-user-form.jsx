@@ -116,8 +116,7 @@ function EditUserFormChild({data}) {
             return;
         }
         const name = `${firstName} ${lastName}`;
-        const data = {name: name, email: email, phoneNumber: phone};
-        await updateMyUser({variables: data});
+        await updateMyUser({variables: {name: name, email: email, phoneNumber: phone}});
         console.log("Editing user...", data);
 
         navigate("/dashboard");

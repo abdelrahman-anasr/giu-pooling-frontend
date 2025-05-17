@@ -1,5 +1,5 @@
 import PassengerTripsList from '../elements/passenger-trips-list';
-import { useEffect } from 'react';
+import { act, useEffect } from 'react';
 import ChoiceBarCurrentBooking from '../elements/choice-bar-current-booking'
 import ScrollableOffersList from '../elements/offers-list'
 import ScrollableDriverTripsList from '../elements/driver-trip-list'
@@ -346,25 +346,24 @@ const DashboardPage = () => {
   const firstRequest = fetchMyRequestsData.fetchMyRequests[0];
   console.log("First request is:" , firstRequest);
 
-  for(let i = 0; i < fetchMyRequestsData.fetchMyRequests.length; i++)
-  {
-    const ride = allRides.find(ride => ride.id === fetchMyRequestsData.fetchMyRequests[i].rideId);
+  fetchMyRequestsData.fetchMyRequests.forEach(request => {
+    const ride = allRides.find(ride => ride.id === request.rideId);
     console.log("Ride is:" , ride);
     const departureDate = ride.time.split('T')[0];
     let departureTime = ride.time.split('T')[1];
     departureTime = departureTime.split('.')[0];
     console.log("Departure time is:" , departureTime);
     let [hours , minutes , seconds] = departureTime.split(':');
-    let timeSign = hours >= 12 ? 'PM' : 'AM';
-    hours = hours % 12;
-    departureTime = hours + ':' + minutes + ' ' + timeSign;
-    departureTime = departureDate + " , " + departureTime;
-    console.log("Departure time is:" , departureTime);
-    console.log("Driver ID is:" , ride.driverId);
-    const car = fetchAllCarsData.cars.find(car => car.DriverId.toString() === ride.driverId.toString());
-    console.log("Car is:" , car);
-    const driverName = fetchMiniUsersData.Miniusers.find(user => user.universityId.toString() === ride.driverId.toString()).name;
-    const data = {id: fetchMyRequestsData.fetchMyRequests[i].id ,tripId : fetchMyRequestsData.fetchMyRequests[i].rideId , type: 'Request' , currentStatus: fetchMyRequestsData.fetchMyRequests[i].status , tripLocation: ride.areaName , driversName: driverName , departureTime: departureTime , carType: car.carModel , pricePerPerson: fetchMyRequestsData.fetchMyRequests[i].price , cancelFunction: cancelRequest};
+    let timeSign = hours >= 12 ? 'PM' : 'AM'; 
+    hours = hours % 12; 
+    departureTime = hours + ':' + minutes + ' ' + timeSign; 
+    departureTime = departureDate + " , " + departureTime; 
+    console.log("Departure time is:" , departureTime); 
+    console.log("Driver ID is:" , ride.driverId); 
+    const car = fetchAllCarsData.cars.find(car => car.DriverId.toString() === ride.driverId.toString()); 
+    console.log("Car is:" , car); 
+    const driverName = fetchMiniUsersData.Miniusers.find(user => user.universityId.toString() === ride.driverId.toString()).name; 
+    const data = {id: request.id ,tripId : request.rideId , type: 'Request' , currentStatus: request.status , tripLocation: ride.areaName , driversName: driverName , departureTime: departureTime , carType: car.carModel , pricePerPerson: request.price , cancelFunction: cancelRequest}; // Create an object with the request data
     if(ride.active)
     {
       activeTripsOfPassenger.push(data);
@@ -373,22 +372,28 @@ const DashboardPage = () => {
     {
       tripsOfPassenger.push(data);
     }
-  }
+  });
 
-  for(let i = 0 ; i < fetchMyBookingsData.fetchMyBookings.length; i++)
-  {
-    const ride = allRides.find(ride => ride.id === fetchMyBookingsData.fetchMyBookings[i].rideId);
+  fetchMyBookingsData.fetchMyBookings.forEach(booking => {
+    const ride = allRides.find(ride => ride.id === booking.rideId);
     console.log("Ride is:" , ride);
-    const departureDate = ride.time.split('T')[0];
+    const departureDate = ride.time.split('T')[0]; 
     let departureTime = ride.time.split('T')[1];
-    departureTime = departureTime.split('.')[0];
-    departureTime = departureDate + " " + departureTime;
+    departureTime = departureTime.split('.')[0]; 
+    departureTime = departureDate + " " + departureTime; 
     console.log("Departure time is:" , departureTime);
-    console.log("Driver ID is:" , ride.driverId);
-    const car = fetchAllCarsData.cars.find(car => car.DriverId.toString() === ride.driverId.toString());
+    let [hours , minutes , seconds] = departureTime.split(':'); 
+    let timeSign = hours >= 12 ? 'PM' : 'AM'; 
+    hours = hours % 12;
+    departureTime = hours + ':' + minutes + ' ' + timeSign; 
+    departureTime = departureDate + " , " + departureTime; 
+    console.log("Departure time is:" , departureTime); 
+    console.log("Driver ID is:" , ride.driverId); 
+    const car = fetchAllCarsData.cars.find(car => car.DriverId.toString() === ride.driverId.toString()); 
     console.log("Car is:" , car);
-    const data = {id: fetchMyRequestsData.fetchMyRequests[i].id ,tripId : fetchMyBookingsData.fetchMyBookings[i].rideId , type: 'Booking' , currentStatus: fetchMyBookingsData.fetchMyBookings[i].status , tripLocation: ride.areaName , departureTime: departureTime , carType: car.carModel , pricePerPerson: fetchMyBookingsData.fetchMyBookings[i].price , cancelFunction: cancelBooking};
-    if(ride.active)
+    const driverName = fetchMiniUsersData.Miniusers.find(user => user.universityId.toString() === ride.driverId.toString()).name; 
+    const data = {id: booking.id ,tripId : booking.rideId , type: 'Booking' , currentStatus: booking.status , tripLocation: ride.areaName , departureTime: departureTime , carType: car.carModel , pricePerPerson: booking.price , cancelFunction: cancelBooking}; // Create an object with the booking data
+    if(ride.active) 
     {
       activeTripsOfPassenger.push(data);
     }
@@ -396,7 +401,7 @@ const DashboardPage = () => {
     {
       tripsOfPassenger.push(data);
     }
-  }
+  });
   
   const username = fetchMyDetailsData.fetchMyDetails.name;
   const firstname = username.split(' ')[0];

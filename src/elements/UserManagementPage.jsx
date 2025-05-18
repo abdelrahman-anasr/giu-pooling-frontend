@@ -494,13 +494,7 @@ const UserManagementContent = () => {
 
   useEffect(() => {
     if (accountRequestsData && activeTab === "accountRequests") {
-      let accountRequests = [];
-      accountRequestsData.accountRequests.forEach((request) => {
-        if(request.status === "PENDING") {
-          accountRequests.push(request);
-        }
-      });
-      setAccountRequests(accountRequests || []);
+      setAccountRequests(accountRequestsData.accountRequests || []);
     }
   }, [accountRequestsData, activeTab]);
 

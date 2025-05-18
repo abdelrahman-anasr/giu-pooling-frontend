@@ -2,13 +2,10 @@
 
 import { useQuery, useMutation, gql, ApolloClient, InMemoryCache, ApolloProvider, useLazyQuery } from "@apollo/client";
 import React, { useState } from "react";
-import UserManagement from "../elements/UserManagement";
-import RideMonitoring from "../elements/RideMonitoring";
-import Payments from "../elements/Payments";
-import Complaints from "../elements/Complaints";
-import Notifications from "../elements/Notifications";
-import "../index.css";
-import "../styles/Common.css";
+import { Link } from "react-router-dom";
+import "../styles/HomePage.css";
+import "../styles/shared.css";
+import Header from "./Header";
 
 const client = new ApolloClient({
   uri: "https://userservice-production-63de.up.railway.app/graphql",
@@ -17,9 +14,7 @@ const client = new ApolloClient({
 });
 
 const AdminDashboard = () => {
-  const [activeTab, setActiveTab] = useState("users");
-  const [hasData, setHasData] = useState(false); // Track if data exists
-
+  
   const FETCH_DETAILS_QUERY = gql`
     query FetchMyDetails {
       fetchMyDetails {
@@ -75,54 +70,60 @@ const AdminDashboard = () => {
     );
   }
   return (
-    <div className="main-container">
-      <h2 className="main-title">Admin Dashboard</h2>
-      
-      <div className="section-container" style={{ padding: "1rem" }}> 
-        <div className="tabs-container">
-          <button 
-            onClick={() => setActiveTab("users")} 
-            className={`tab-button ${activeTab === "users" ? "active" : ""}`}
-          >
-            User Management
-          </button>
-          <button 
-            onClick={() => setActiveTab("rides")} 
-            className={`tab-button ${activeTab === "rides" ? "active" : ""}`}
-          >
-            Ride Monitoring
-          </button>
-          <button 
-            onClick={() => setActiveTab("payments")} 
-            className={`tab-button ${activeTab === "payments" ? "active" : ""}`}
-          >
-            Payments &amp; Refunds
-          </button>
-          <button 
-            onClick={() => setActiveTab("complaints")} 
-            className={`tab-button ${activeTab === "complaints" ? "active" : ""}`}
-          >
-            Complaints
-          </button>
-          <button 
-            onClick={() => setActiveTab("notifications")} 
-            className={`tab-button ${activeTab === "notifications" ? "active" : ""}`}
-          >
-            Notifications
-          </button>
+    
+      <div className="page-container">
+        <h2>Admin Dashboard</h2>
+        <div className="dashboard-overview">
+          <p>
+            Welcome to the admin dashboard. Please select a section to manage:
+          </p>
+          <Header />
+  
+          <div className="dashboard-grid">
+            <Link to="/bookings" className="dashboard-card">
+              <div className="card-icon">
+                <i className="fas fa-calendar-check"></i>
+              </div>
+              <h3>Bookings</h3>
+              <p>Manage ride bookings and requests</p>
+            </Link>
+  
+            <Link to="/notifications" className="dashboard-card">
+              <div className="card-icon">
+                <i className="fas fa-bell"></i>
+              </div>
+              <h3>Notifications</h3>
+              <p>Send and manage system notifications</p>
+            </Link>
+  
+            <Link to="/payments" className="dashboard-card">
+              <div className="card-icon">
+                <i className="fas fa-credit-card"></i>
+              </div>
+              <h3>Payments</h3>
+              <p>Track payment transactions</p>
+            </Link>
+  
+            <Link to="/rides" className="dashboard-card">
+              <div className="card-icon">
+                <i className="fas fa-car"></i>
+              </div>
+              <h3>Ride Monitoring</h3>
+              <p>Manage areas and ride information</p>
+            </Link>
+  
+            <Link to="/users" className="dashboard-card">
+              <div className="card-icon">
+                <i className="fas fa-users"></i>
+              </div>
+              <h3>User Management</h3>
+              <p>Manage users and requests</p>
+            </Link>
+          </div>
         </div>
       </div>
+    );
+  };
 
-      {/* Render the selected tab component and update hasData */}
-      <div className="tab-content-container">
-        {activeTab === "users" && <UserManagement setHasData={setHasData} />}
-        {activeTab === "rides" && <RideMonitoring setHasData={setHasData} />}
-        {activeTab === "payments" && <Payments setHasData={setHasData} />}
-        {activeTab === "complaints" && <Complaints setHasData={setHasData} />}
-        {activeTab === "notifications" && <Notifications setHasData={setHasData} />}
-      </div>
-    </div>
-  );
-};
 
 export default AdminDashboard;

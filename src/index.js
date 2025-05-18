@@ -19,31 +19,41 @@ import CreateRideForm from './pages/CreateRideForm';
 import DriverRegistrationForm from './pages/DriverRegistrationForm';
 import VerifyAccount from './pages/verifyAccount';
 import EditUserPage from './pages/EditUserPage';
+import HomePage from "../src/elements/HomePage";
+import BookingsPage from "../src/elements/BookingsPage";
+import NotificationsPage from "../src/elements/NotificationsPage";
+import PaymentsPage from "../src/elements/PaymentsPage";
+import RideMonitoringPage from "../src/elements/RideMonitoringPage";
+import UserManagementPage from "../src/elements/UserManagementPage";
 
 
 export default function App() {
   console.log("version is:" , React.version);
   return (
     <div>
-
       <Navbar />
       <Routes>
         <Route index element={<Home />} />
-        <Route path="*" element={<h1 style={{top: 2000}}>404</h1>} />
+        <Route path="*" element={<h1 style={{ top: 2000 }}>404</h1>} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/book" element={<BookSearch />} />
         <Route path="/search" element={<Results />} />
         <Route path="/booking" element={<BookingPage />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/register' element={<Register />} />
-        <Route path='/complaints' element={<Complaints />} />
-        <Route path='/notifications' element={<Notification />} />
-        <Route path='/submitcomplaints' element={<ComplaintsSubmit />} />
-        <Route path='/driverregistration' element={<DriverRegistrationForm />} />
-        <Route path='/createride' element={<CreateRideForm />} />
-        <Route path='/verify-account' element={<VerifyAccount />} />
-        <Route path='/edituser' element={<EditUserPage />} />
-        
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/complaints" element={<Complaints />} />
+        <Route path="/notifications" element={<Notification />} />
+        <Route path="/submitcomplaints" element={<ComplaintsSubmit />} />
+        <Route path="/driverregistration"element={<DriverRegistrationForm />}/>
+        <Route path="/createride" element={<CreateRideForm />} />
+        <Route path="/verify-account" element={<VerifyAccount />} />
+        <Route path="/edituser" element={<EditUserPage />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/bookings" element={<BookingsPage />} />
+        <Route path="/notifications" element={<NotificationsPage />} />
+        <Route path="/payments" element={<PaymentsPage />} />
+        <Route path="/rides" element={<RideMonitoringPage />} />
+        <Route path="/users" element={<UserManagementPage />} />
       </Routes>
     </div>
   );

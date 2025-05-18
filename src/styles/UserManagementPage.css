@@ -1,0 +1,1200 @@
+:root {
+  --primary-color: #d52029;
+  --secondary-color: #ffd281;
+  --light-bg: #fff8ef;
+  --neutral-light: #ededed;
+  --white: #ffffff;
+  --black: #000000;
+  --hover-red: #c51c24;
+  --hover-orange: #f5c56d;
+  --text-dark: #000000;
+  --text-light: #ffffff;
+  --dark-overlay: rgba(0, 0, 0, 0.5);
+  --border-color: #ededed;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  background-color: var(--light-bg);
+  margin: 0;
+  padding: 20px;
+  color: var(--text-dark);
+}
+
+.user-management-page {
+  background-color: var(--white);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  max-width: 1200px;
+  margin: 20px auto;
+}
+
+.page-title {
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 2em;
+}
+
+/* Tab Navigation */
+.tab-navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  background-color: var(--neutral-light);
+  padding: 10px 16px;
+  border-radius: 999px;
+  margin: 2rem auto;
+  max-width: fit-content;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  flex-wrap: wrap;
+  transition: background-color 0.3s ease;
+}
+
+/* Base Tab Button */
+.tab-button {
+  background-color: transparent;
+  border: none;
+  padding: 10px 22px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-radius: 999px;
+  cursor: pointer;
+  color: var(--text-dark);
+  position: relative;
+  transition: all 0.3s ease;
+  letter-spacing: 0.3px;
+  display: flex;
+  align-items: center;
+}
+
+/* Optional tab icon style (if you use icons) */
+.tab-button i {
+  margin-right: 8px;
+  font-size: 1rem;
+}
+
+/* Active tab */
+.tab-button.active {
+ 
+  color: var(--white);
+  font-weight: 600;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+  
+  background-color: rgba(0, 0, 0, 0.65);
+backdrop-filter: blur(6px);
+ /* optional blur for frosted-glass feel */
+}
+
+
+/* Underline indicator (subtle, fancy) */
+.tab-button.active::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40%;
+  height: 3px;
+  background-color: var(--primary-color);
+  border-radius: 2px;
+  opacity: 0.8;
+}
+
+/* Hover feedback for inactive tabs */
+.tab-button:hover:not(.active) {
+  background-color: rgba(0, 0, 0, 0.04);
+  color: var(--primary-color);
+  transform: translateY(-1px);
+}
+
+
+/* Content card */
+.content-card {
+  background-color: var(--white);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* Header styling */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.header-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.section-controls {
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Button Styles */
+.add-user-btn,
+.submit-btn,
+.primary-button {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  margin-right: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.add-user-btn {
+  margin-bottom: 20px;
+}
+
+.add-user-btn:hover,
+.submit-btn:hover,
+.primary-button:hover {
+  background-color: var(--hover-red);
+}
+
+.edit-btn,
+.secondary-button {
+  background-color: var(--secondary-color);
+  color: var(--text-dark);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  margin-right: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.edit-btn:hover,
+.secondary-button:hover {
+  background-color: var(--hover-orange);
+}
+
+.delete-btn,
+.reject-button {
+  background-color: var(--primary-color);
+  color: var(--white);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  margin-right: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.delete-btn:hover,
+.reject-button:hover {
+  background-color: var(--hover-red);
+}
+
+.accept-button {
+  background-color: var(--secondary-color);
+  color: var(--text-dark);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  margin-right: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.accept-button:hover {
+  background-color: var(--hover-orange);
+}
+
+.submit-btn:disabled,
+.edit-btn:disabled,
+.delete-btn:disabled,
+.primary-button:disabled,
+.secondary-button:disabled,
+.accept-button:disabled,
+.reject-button:disabled {
+  background-color: var(--neutral-light);
+  color: var(--text-dark);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Table Styles */
+.users-table,
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.users-table th,
+.users-table td,
+.data-table th,
+.data-table td {
+  border: 1px solid var(--border-color);
+  padding: 12px;
+  text-align: left;
+}
+
+.users-table th,
+.data-table th {
+  background-color: var(--neutral-light);
+  color: var(--text-dark);
+  font-weight: bold;
+}
+
+.users-table tr:nth-child(even),
+.data-table tr:nth-child(even) {
+  background-color: var(--light-bg);
+}
+
+.users-table tr:hover,
+.data-table tr:hover {
+  background-color: var(--neutral-light);
+}
+
+.actions-cell button {
+  margin-right: 5px;
+}
+
+.actions-cell button:last-child {
+  margin-right: 0;
+}
+
+/* Role badges */
+.role-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.role-badge.admin {
+  background-color: var(--secondary-color);
+  color: var(--text-dark);
+}
+
+.role-badge.driver {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+}
+
+.role-badge.student {
+  background-color: var(--neutral-light);
+  color: var(--text-dark);
+}
+
+/* Status badges */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.status-badge.status-pending {
+  background-color: var(--neutral-light);
+  color: var(--text-dark);
+}
+
+.status-badge.status-approved {
+  background-color: var(--secondary-color);
+  color: var(--text-dark);
+}
+
+.status-badge.status-rejected {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: var(--dark-overlay);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  background-color: var(--white);
+  padding: 0;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-header {
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: 15px 20px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h2 {
+  margin: 0;
+  color: var(--white);
+  font-size: 1.5rem;
+}
+
+.close-button {
+  color: var(--white);
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  opacity: 0.8;
+}
+
+.modal form {
+  padding: 20px;
+}
+
+/* Form Styles */
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="tel"],
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: var(--white);
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="password"]:focus,
+.form-group input[type="tel"]:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--secondary-color);
+  outline: none;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+}
+
+.form-group input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* Loading spinner */
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.spinner {
+  border: 4px solid var(--neutral-light);
+  border-radius: 50%;
+  border-top: 4px solid var(--primary-color);
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Error and Loading Messages */
+.loading-message {
+  text-align: center;
+  padding: 20px;
+  color: var(--primary-color);
+  font-size: 1.1em;
+  background-color: var(--light-bg);
+  border-radius: 4px;
+}
+
+.error-message {
+  color: var(--primary-color);
+  background-color: var(--light-bg);
+  border: 1px solid var(--primary-color);
+  padding: 10px;
+  border-radius: 4px;
+  margin: 10px 0;
+  font-size: 0.9em;
+}
+
+.empty-table {
+  text-align: center;
+  padding: 30px;
+  color: var(--text-dark);
+  background-color: var(--light-bg);
+  border-radius: 4px;
+  font-style: italic;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .users-table,
+  .data-table,
+  .users-table tbody,
+  .data-table tbody,
+  .users-table tr,
+  .data-table tr,
+  .users-table td,
+  .data-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .users-table thead,
+  .data-table thead {
+    display: none;
+  }
+
+  .users-table tr,
+  .data-table tr {
+    margin-bottom: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+  }
+
+  .users-table td,
+  .data-table td {
+    text-align: right;
+    padding-left: 50%;
+    position: relative;
+    border: none;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .users-table td:last-child,
+  .data-table td:last-child {
+    border-bottom: none;
+  }
+
+  .users-table td::before,
+  .data-table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 10px;
+    width: calc(50% - 20px);
+    padding-right: 10px;
+    white-space: nowrap;
+    text-align: left;
+    font-weight: bold;
+  }
+
+  .modal {
+    width: 95%;
+    max-height: 85vh;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .form-actions button {
+    width: 100%;
+    margin: 5px 0;
+  }
+
+  .tab-navigation {
+    flex-wrap: wrap;
+  }
+
+  .tab-button {
+    flex: 1;
+    min-width: 120px;
+    text-align: center;
+  }
+}
+
+/* After your existing license modal styles, add these new styles */
+
+.view-button {
+  background-color: var(--neutral-light);
+  color: var(--text-dark);
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9em;
+}
+
+.view-button:hover {
+  background-color: var(--secondary-color);
+}
+
+.license-container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--light-bg);
+  overflow: hidden;
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.license-image-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.license-image {
+  max-width: 100%;
+  max-height: 500px;
+  border: 2px solid var(--neutral-light);
+  border-radius: 4px;
+  margin-bottom: 20px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.license-image:hover {
+  transform: scale(1.05);
+}
+
+.license-error {
+  padding: 20px;
+  background-color: #fef2f2;
+  border: 1px solid var(--primary-color);
+  border-radius: 4px;
+  color: var(--text-dark);
+  text-align: center;
+  margin: 20px 0;
+  width: 100%;
+  max-width: 500px;
+}
+
+.license-error p {
+  margin-bottom: 15px;
+}
+
+.error-details {
+  font-size: 0.9em;
+  color: #666;
+  margin-top: 15px;
+  text-align: center;
+  background-color: #f9f9f9;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.download-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: var(--secondary-color);
+  color: var(--text-dark);
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 600;
+  transition: background-color 0.2s;
+  margin: 10px 0;
+}
+
+.download-button:hover {
+  background-color: var(--hover-orange);
+}
+
+.empty-license {
+  padding: 30px;
+  background-color: var(--neutral-light);
+  border-radius: 4px;
+  color: var(--text-dark);
+  text-align: center;
+  font-style: italic;
+  margin: 20px 0;
+  width: 100%;
+}
+
+.debug-info {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.8em;
+  overflow-wrap: break-word;
+  word-break: break-all;
+}
+
+.debug-info p {
+  margin: 5px 0;
+}
+
+#license-error {
+  width: 100%;
+  text-align: center;
+}
+
+#license-error a {
+  color: var(--primary-color);
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+#license-error a:hover {
+  color: var(--hover-red);
+}
+
+/* Status badge styling for specific statuses */
+.status-badge.status-pending {
+  background-color: var(--neutral-light);
+  color: var(--text-dark);
+}
+
+.status-badge.status-approved {
+  background-color: var(--secondary-color);
+  color: var(--text-dark);
+}
+
+.status-badge.status-rejected {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+}
+
+/* Tab indicator with badge count */
+.tab-button .badge-count {
+  background-color: var(--primary-color);
+  color: var(--white);
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 0.8em;
+  margin-left: 5px;
+  min-width: 20px;
+  display: inline-block;
+  text-align: center;
+}
+
+/* Highlight pending rows */
+.status-pending-row {
+  position: relative;
+}
+
+.status-pending-row::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  background-color: var(--secondary-color);
+}
+
+/* Media queries for the image in the license modal */
+@media (max-width: 768px) {
+  .license-image {
+    max-height: 300px;
+  }
+
+  .license-container {
+    padding: 15px;
+    max-height: 400px;
+  }
+}
+
+/* Driver Management Styles */
+.driver-management {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.section-title {
+  color: var(--text-dark);
+  font-size: 1.3em;
+  margin-bottom: 15px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Filter controls */
+.filter-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  gap: 15px;
+}
+
+.status-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.filter-btn {
+  padding: 8px 15px;
+  background-color: var(--neutral-light);
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: all 0.2s;
+}
+
+.filter-btn.active {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+.filter-btn.pending.active {
+  background-color: var(--secondary-color);
+  color: var(--text-dark);
+}
+
+.filter-btn.approved.active {
+  background-color: #28a745;
+  color: var(--white);
+}
+
+.filter-btn.rejected.active {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+.search-filter {
+  flex-grow: 1;
+  max-width: 300px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+  font-size: 0.9em;
+}
+
+/* Driver request cards */
+.driver-requests-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.driver-request-card {
+  background-color: var(--white);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  border-left: 4px solid var(--border-color);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.driver-request-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.driver-request-card.status-pending {
+  border-left-color: var(--secondary-color);
+}
+
+.driver-request-card.status-approved {
+  border-left-color: #28a745;
+}
+
+.driver-request-card.status-rejected {
+  border-left-color: var(--primary-color);
+}
+
+.request-header {
+  background-color: var(--neutral-light);
+  padding: 12px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.request-id {
+  font-weight: bold;
+  font-size: 0.9em;
+}
+
+.request-details {
+  padding: 15px;
+}
+
+.detail-row {
+  margin-bottom: 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.detail-label {
+  font-weight: 500;
+  min-width: 100px;
+  color: var(--text-dark);
+  opacity: 0.7;
+}
+
+.detail-value {
+  font-weight: 600;
+}
+
+.request-actions {
+  padding: 15px;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.view-license-btn {
+  padding: 8px 12px;
+  background-color: var(--neutral-light);
+  color: var(--text-dark);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size: 0.9em;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.view-license-btn:hover {
+  background-color: var(--secondary-color);
+}
+
+.action-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.action-buttons button {
+  flex: 1;
+  padding: 10px;
+  font-size: 0.9em;
+  font-weight: 500;
+}
+
+/* Cars Grid */
+.cars-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.car-card {
+  background-color: var(--white);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.car-header {
+  background-color: var(--secondary-color);
+  padding: 12px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.car-name {
+  font-weight: bold;
+  font-size: 1em;
+}
+
+.seats-badge {
+  background-color: var(--white);
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 0.8em;
+  font-weight: 600;
+}
+
+.car-details {
+  padding: 15px;
+}
+
+/* Responsive adjustments for driver management */
+@media (max-width: 768px) {
+  .driver-management {
+    gap: 15px;
+  }
+
+  .section-title {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }
+
+  .filter-controls {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .search-filter {
+    max-width: 100%;
+  }
+
+  .driver-requests-grid,
+  .cars-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+}
+
+/* After your existing styles, add these new styles for complaints management */
+
+/* Complaint management styles */
+.complaint-detail-view {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.complaint-navigation {
+  margin-bottom: 10px;
+}
+
+.back-button {
+  background-color: var(--neutral-light);
+  color: var(--text-dark);
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.back-button:hover {
+  background-color: var(--secondary-color);
+}
+
+.complaint-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 15px;
+}
+
+.complaint-header h3 {
+  margin: 0;
+  color: var(--text-dark);
+}
+
+.complaint-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.complaint-details {
+  padding: 0 10px;
+}
+
+.complaint-message {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid var(--border-color);
+}
+
+.complaint-message h4 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: var(--text-dark);
+}
+
+.message-content {
+  background-color: var(--light-bg);
+  padding: 15px;
+  border-radius: 6px;
+  white-space: pre-line;
+  line-height: 1.5;
+  font-size: 0.95em;
+}
+
+/* Responses list */
+.responses-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.response-card {
+  background-color: var(--white);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.response-header {
+  background-color: var(--neutral-light);
+  padding: 12px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.response-header h4 {
+  margin: 0;
+  font-size: 1em;
+  font-weight: 600;
+}
+
+.response-date {
+  font-size: 0.85em;
+  color: #666;
+}
+
+.response-content {
+  padding: 15px;
+  white-space: pre-line;
+  line-height: 1.5;
+}
+
+/* Response form */
+.response-form textarea {
+  resize: vertical;
+  min-height: 120px;
+  font-family: inherit;
+}
+
+/* Colors for buttons */
+.respond-button {
+  background-color: var(--secondary-color);
+  color: var(--text-dark);
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9em;
+  margin-right: 5px;
+}
+
+.respond-button:hover {
+  background-color: var(--hover-orange);
+}
+
+/* Responsive styles for complaint management */
+@media (max-width: 768px) {
+  .complaint-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .complaint-actions {
+    width: 100%;
+  }
+
+  .complaint-actions button {
+    flex: 1;
+  }
+
+  .response-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+  .admin-response-manager {
+    border: 1px solid #ccc;
+    padding: 1rem;
+    margin-top: 2rem;
+    background: #f9f9f9;
+    border-radius: 8px;
+  }
+  .admin-response-manager ul {
+    list-style: none;
+    padding: 0;
+  }
+  .admin-response-manager li {
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+    border-bottom: 1px solid #eee;
+  }
+  .admin-response-manager form input,
+  .admin-response-manager form textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+  }
+  .admin-response-manager form button {
+    padding: 0.5rem 1rem;
+    border: none;
+    background: #1976d2;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .admin-response-manager form button:hover {
+    background: #1565c0;
+  }}
+  

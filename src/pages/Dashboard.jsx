@@ -397,7 +397,7 @@ const DashboardPage = () => {
     const car = fetchAllCarsData.cars.find(car => car.DriverId.toString() === ride.driverId.toString()); 
     console.log("Car is:" , car);
     const driverName = fetchMiniUsersData.Miniusers.find(user => user.universityId.toString() === ride.driverId.toString()).name; 
-    const data = {id: booking.id ,tripId : booking.rideId , type: 'Booking' , currentStatus: booking.status , tripLocation: ride.areaName , departureTime: departureTime , carType: car.carModel , pricePerPerson: booking.price , cancelFunction: cancelBooking}; // Create an object with the booking data
+    const data = {id: booking.id ,tripId : booking.rideId , type: 'Booking' , currentStatus: booking.status , tripLocation: ride.areaName , driversName: driverName, departureTime: departureTime , carType: car.carModel , pricePerPerson: booking.price , cancelFunction: cancelBooking}; // Create an object with the booking data
     if(ride.active) 
     {
       activeTripsOfPassenger.push(data);
@@ -411,7 +411,10 @@ const DashboardPage = () => {
   const username = fetchMyDetailsData.fetchMyDetails.name;
   const firstname = username.split(' ')[0];
 
-  
+  console.log("Active trips of passenger is:" , activeTripsOfPassenger);
+  console.log("Trips of passenger is:" , tripsOfPassenger);
+
+
   if(role === 'admin')
   {
     return (

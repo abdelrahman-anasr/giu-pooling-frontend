@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../styles/NotificationsPage.css";
 import "../styles/shared.css";
-import Header from "./Header";// adjust the path based on where Navbar.jsx lives
+import Header from "../elements/Header";// adjust the path based on where Navbar.jsx lives
 
 const NotificationsPage = () => {
   const [notifications, setNotifications] = useState([]);

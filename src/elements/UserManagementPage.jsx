@@ -8,7 +8,7 @@ import {
   useMutation,
 } from "@apollo/client";
 import "../styles/UserManagementPage.css";
-import Header from "./Header";
+import Header from "../elements/Header";
 
 // Create Apollo Client for User Management Service
 const adminClient = new ApolloClient({

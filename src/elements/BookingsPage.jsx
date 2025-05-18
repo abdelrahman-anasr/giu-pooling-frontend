@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
-import Header from "./Header";
+import Header from "../elements/Header";
 import {
   ApolloClient,
   InMemoryCache,

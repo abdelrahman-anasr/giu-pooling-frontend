@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/HomePage.css";
 import "../styles/shared.css";
-import Header from "./Header";
+import Header from "../elements/Header";
 
 const client = new ApolloClient({
   uri: "https://userservice-production-63de.up.railway.app/graphql",

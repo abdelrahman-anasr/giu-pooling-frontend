@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import "../styles/PaymentsPage.css";
 import "../styles/shared.css";
 import "../styles/BookingsPage.css";
-import Header from "./Header";
+import Header from "../elements/Header";
 import {
   ApolloClient,
   InMemoryCache,

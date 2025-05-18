@@ -19,7 +19,6 @@ import CreateRideForm from './pages/CreateRideForm';
 import DriverRegistrationForm from './pages/DriverRegistrationForm';
 import VerifyAccount from './pages/verifyAccount';
 import EditUserPage from './pages/EditUserPage';
-import HomePage from "../src/elements/HomePage";
 import BookingsPage from "../src/elements/BookingsPage";
 import NotificationsPage from "../src/elements/NotificationsPage";
 import PaymentsPage from "../src/elements/PaymentsPage";

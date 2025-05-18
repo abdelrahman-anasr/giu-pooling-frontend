@@ -494,7 +494,8 @@ const UserManagementContent = () => {
 
   useEffect(() => {
     if (accountRequestsData && activeTab === "accountRequests") {
-      setAccountRequests(accountRequestsData.accountRequests || []);
+      const processedAccountRequests = accountRequestsData.accountRequests.filter(accR => accR.status === "PENDING")
+      setAccountRequests(processedAccountRequests || []);
     }
   }, [accountRequestsData, activeTab]);
 

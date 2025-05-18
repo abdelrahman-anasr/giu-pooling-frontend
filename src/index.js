@@ -26,6 +26,7 @@ import RideMonitoringPage from "../src/elements/RideMonitoringPage";
 import UserManagementPage from "../src/elements/UserManagementPage";
 
 
+
 export default function App() {
   console.log("version is:" , React.version);
   return (
@@ -47,7 +48,7 @@ export default function App() {
         <Route path="/createride" element={<CreateRideForm />} />
         <Route path="/verify-account" element={<VerifyAccount />} />
         <Route path="/edituser" element={<EditUserPage />} />
-        <Route path="/" element={<HomePage />} />
+      
         <Route path="/bookings" element={<BookingsPage />} />
         <Route path="/notifications" element={<NotificationsPage />} />
         <Route path="/payments" element={<PaymentsPage />} />

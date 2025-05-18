@@ -325,7 +325,7 @@ const DashboardPage = () => {
       cancelRide({ variables: { id: id }});
     }
 
-    allRides.forEach(ride => {
+    rides.forEach(ride => {
       const rideTime = (' ' + ride.time).slice(1);
       const departureDate = rideTime.split('T')[0];
       let departureTime = rideTime.split('T')[1];
